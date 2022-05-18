@@ -1,4 +1,153 @@
-html, body {
+/* Import font-family */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* Create reusable variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
   height: 100%;
+  background: linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
+  background-blend-mode: darken;
+  font-family: "Inter", "Sans-serif";
+}
+
+.centereditems, .startbutton__container, html,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allLinks, .backToHome {
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+  background: #fff;
+  height: 90%;
+  padding: 5%;
+}
+
+h1 {
+  justify-self: flex-start;
+  margin: 0 0 10% 0;
+}
+
+p {
+  text-align: center;
+}
+
+form {
   width: 100%;
 }
+form input[type=text],
+form input[type=email] {
+  width: 100%;
+  padding: 2% 5%;
+  margin: 2% 0;
+}
+
+.startButton, .exitButton, .nextButton, .backToHome {
+  padding: 1em 10%;
+  background: #028A3D;
+  border: none;
+  color: #fff;
+  font-size: 1em;
+}
+
+.username__container {
+  margin: 10% 0;
+}
+
+.usermail__container {
+  margin: 10% 0 0 0;
+}
+
+.startbutton__container {
+  margin: 5% 0 0;
+}
+
+/* Success page */
+.backToHome {
+  background-color: #0880D6;
+  margin: 5% 0;
+}
+
+.username__response,
+.usermail__response {
+  margin: 5% 0;
+}
+
+.icon__container {
+  font-size: 8em;
+  margin: 5% 0;
+}
+
+.success {
+  color: #028A3D;
+}
+
+.failed {
+  color: #FF3838;
+}
+
+/* Question page */
+.questionstatus__container {
+  width: 100%;
+}
+
+.status, .buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 5% 0;
+}
+
+.progressbar__container {
+  width: 100%;
+  background: #DDDDDD;
+  border-radius: 1em;
+  margin: 5% 0;
+}
+
+.progressbar {
+  height: 0.6em;
+  width: 60%;
+  background: #028A3D;
+  border-radius: 1em;
+}
+
+.answer__container {
+  width: 100%;
+  border: 0.1em solid #c4c4c4;
+  padding: 3% 5%;
+  margin: 5% 0;
+}
+
+.buttonContainer {
+  margin: 10% 0;
+}
+
+.nextButton:disabled {
+  background: rgba(2, 138, 61, 0.42);
+}
+
+.exitButton {
+  background: #EC880C;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 978px) {
+  .container {
+    width: 60%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
