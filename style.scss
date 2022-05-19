@@ -147,7 +147,18 @@ form {
     width: 100%;
     border: .1em solid #c4c4c4;
     padding: 3% $padding;
-    margin: 5% 0;
+    margin: 10% 0;
+
+    label,
+    input {
+        margin: 0 2%;
+    }
+
+
+}
+
+.cliked {
+    border: .1em solid $submit__button__bg;
 }
 
 .buttonContainer {
@@ -157,6 +168,8 @@ form {
 
 .nextButton {
     @extend .startButton;
+    width: 50%;
+    margin: 0 0 0 5%;
 }
 
 .nextButton:disabled {
@@ -166,6 +179,7 @@ form {
 .exitButton {
     @extend .startButton;
     background: #EC880C;
+    width: 50%;
 }
 
 @media screen and (max-width: 1024px) and (min-width:978px) {
