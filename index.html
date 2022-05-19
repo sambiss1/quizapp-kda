@@ -11,28 +11,44 @@
 <body>
   <!--Main container -->
   <div class="container">
-    <h1>JavaScript Quiz</h1>
-    <p class="presentation-text">
-      Évaluez vos connaissances en JavaScript en répondant aux questions que nous avons spécialement sélectionnées pour
-      vous.
-      <br>C'est fun et c'est gratuit.
-    </p>
-    <!-- Main form-->
-    <form class="main-form">
-      <div class="username__container">
-        <label for="username">Nom</label>
-        <br>
-        <input type="text" id="username" name="username" placeholder="e.g. Joseph" required>
+    <div id="home">
+      <h1>JavaScript Quiz</h1>
+      <p class="presentation-text">
+        Évaluez vos connaissances en JavaScript en répondant aux questions que nous avons spécialement sélectionnées
+        pour
+        vous.
+        <br>C'est fun et c'est gratuit.
+      </p>
+      <!-- Main form-->
+      <form class="main-form">
+        <div class="username__container">
+          <label for="username">Nom</label>
+          <br>
+          <input type="text" id="username" name="username" placeholder="e.g. Joseph" required>
+        </div>
+        <div class="usermail__container">
+          <label for="usermail">Email</label>
+          <br>
+          <input type="email" id="usermail" name="usermail" placeholder="e.g. joseph@kinshasadigital.com" required>
+        </div>
+        <div class="startbutton__container">
+          <input type="submit" value="Commencer" class="startButton">
+        </div>
+      </form>
+    </div>
+    <div id="quiz__box">
+      <!--Question title-->
+      <p class="question-title">
+
+      </p>
+      <!--Question status-->
+      <div class="questionstatus__container">
+
       </div>
-      <div class="usermail__container">
-        <label for="usermail">Email</label>
-        <br>
-        <input type="email" id="usermail" name="usermail" placeholder="e.g. joseph@kinshasadigital.com" required>
-      </div>
-      <div class="startbutton__container">
-        <input type="submit" value="Commencer" class="startButton">
-      </div>
-    </form>
+      <form class="question-form">
+
+      </form>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
