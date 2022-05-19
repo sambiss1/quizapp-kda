@@ -1,30 +1,18 @@
 // Using local Storage 
 const username = document.querySelector("#username");
 const usermail = document.querySelector("#usermail");
+const homeContent = document.querySelector("#home");
+
+// Question box
+const quizBox = document.querySelector("#quiz__box");
+//const form = document.createElement("form");
+//form.classList.add("main-form");
+const form = document.querySelector("form")
 
 
 
-const form = document.querySelector("form");
-
-// form.addEventListener("submit", storeUserData = (event) => {
-//     const usernameValue = username.value;
-//     const usermailValue = usermail.value; event.preventDefault();
-//     console.log(usernameValue);
-//     console.log(usermailValue);
-
-//     localStorage.setItem("user-name", usernameValue);
-//     localStorage.setItem("user-mail", usermailValue);
-
-
-//     const userNameResponse = localStorage.getItem("user-name");
-//     const userMailResponse = localStorage.getItem("user-mail");
-
-//     console.log(userNameResponse);
-//     console.log(userMailResponse);
-// })
 
 // Create all questions 
-
 const questions = [
     {
         id: 1,
@@ -180,88 +168,138 @@ const questions = [
             "False answer"
         ]
     },
-]
+];
 
-// Active next button 
-const nextButton = document.querySelector(".nextButton");
-document.addEventListener("DOMContentLoaded", showContent = (event) => {
+
+
+let indexQuestion = 0;
+
+
+// Function for showing questions 
+const showQuestionsFunction = (indexQuestion) => {
     // Question Title
-    const questionTitle = document.createElement("p");
-    questionTitle.classList.add("presentation-text");
-
+    const questionTitle = document.querySelector(".question-title");
+    // questionTitle.classList.add("presentation-text");
 
     // Question status
-    const questionStatusContainer = document.createElement("div");
-    questionStatusContainer.classList.add("questionstatus__container");
+    const questionStatusContainer = document.querySelector(".questionstatus__container")
 
-    // Form (Answers suggested)
-    const form = document.createElement("form");
-    form.classList.add("main-form");
+    // Question form
+    const questionForm = document.querySelector(".question-form")
 
-    for (let i = 0; i < questions.length; i++) {
+    // Question title
+    let questionText = `<span>` + questions[indexQuestion].question + `</span>`;
+    questionTitle.innerHTML = questionText;
+    // Question status
+    let status = `<div class="status">` +
+        `<p class="question__number">` + "Question " + questions[indexQuestion].id + "/15" + `</p>` +
+        `<div class="timercounter">` + "30" + `</div>` +
+        `</div>`;
+    // Question progress
+    let progressContainer = `<div class="progressbar__container">` +
+        `<div class="progressbar">` + `</div>`
+        + `</div > `;
 
-        // Question title
-        let questionText = `<span class="presentation-text">` + questions[0].question + `</span>`;
-        questionTitle.innerHTML = questionText;
 
-        // Question status
-        let status = `<div class="status">` +
-            `<p class="question__number">` + "Question " + questions[0].id + "/15" + `</p>` +
-            `<div class="timercounter">` + "30" + `</div>` +
-            `</div>`;
-        // Question progress
-        let progressContainer = `<div class="progressbar__container">` +
-            `<div class="progressbar">` + `</div>`
-            + `</div > `;
-        questionStatusContainer.innerHTML = status + progressContainer;
+    // Anwers suggested
+    const answerContainer = `<div class="answer__container">` +
+        `<input type="radio" class="answer" name="answer" >` +
+        `<label for="answer">` + questions[indexQuestion].answerSuggested[3] + `</label>` +
+        `</div>` +
+        `<div class="answer__container">` +
+        `<input type="radio" class="answer" name="answer" >` +
+        `<label for="answer">` + questions[indexQuestion].answerSuggested[1] + `</label>` +
+        `</div>` +
+        `<div class="answer__container">` +
+        `<input type="radio" class="answer" name="answer" >` +
+        `<label for="answer">` + questions[indexQuestion].answerSuggested[2] + `</label>` +
+        `</div>` + `<div class="answer__container">` +
+        `<input type="radio" class="answer" name="answer" >` +
+        `<label for="answer">` + questions[indexQuestion].answerSuggested[0] + `</label>` +
+        `</div>`;
 
-        // Anwers suggested
-        for (let i = 0; i < questions[0].answerSuggested.length; i++) {
-            const answerContainer = `<div class="answer__container">` +
-                `<input type="radio" class="answer" name="answer" >` +
-                `<label>` + questions[0].answerSuggested[3] + `</label>` +
-                `</div>` +
-                `<div class="answer__container">` +
-                `<input type="radio" class="answer" name="answer" >` +
-                `<label>` + questions[0].answerSuggested[1] + `</label>` +
-                `</div>` +
-                `<div class="answer__container">` +
-                `<input type="radio" class="answer" name="answer" >` +
-                `<label>` + questions[0].answerSuggested[2] + `</label>` +
-                `</div>` + `<div class="answer__container">` +
-                `<input type="radio" class="answer" name="answer" >` +
-                `<label>` + questions[0].answerSuggested[0] + `</label>` +
-                `</div>`;
-            form.innerHTML = answerContainer;
-        }
+    // Form buttons 
+    let buttonsContainer = `<div class="buttonContainer">` +
+        `<input type="button" value="Quitter" class="exitButton">` +
+        `<input type="button" value="Suivant" class="nextButton" disabled>` +
+        `</div>`
 
-        // Form buttons 
-        let buttonsContainer = `<div class="buttonContainer">` +
-            `<input type="button" value="Quitter" class="exitButton">` +
-            `<input type="submit" value="Suivant" class="nextButton" disabled>` +
-            `</div>`
-        form.innerHTML += buttonsContainer;
-    }
-    quizBox.appendChild(questionTitle);
-    quizBox.appendChild(questionStatusContainer);
-    quizBox.appendChild(form);
+    // Show data
+    questionStatusContainer.innerHTML = status + progressContainer;
+    questionForm.innerHTML = answerContainer;
+    questionForm.innerHTML += buttonsContainer;
 
     // User choice
-    let answerChoice = document.querySelector(".answer__container");
-    let answer = document.querySelector(".answer");
-    let nextButton = document.querySelector(".nextButton");
-    answerChoice.addEventListener("click", choiceAnswer = (event) => {
-        answer.setAttribute("checked", "true")
-        answerChoice.classList.add("cliked");
-        nextButton.disabled = false;
+    const answerChoice = document.querySelector(".answer__container");
+    const answer = document.querySelector(".answer");
+    const nextButton = document.querySelector(".nextButton");
 
+    // Get user selected choice
+    // From radio button
+    const userAnswers = document.querySelectorAll("input[name='answer']")
+
+    // From radio label 
+    const labelAnswers = document.querySelectorAll(".answer__container");
+
+
+    for (const userAnswer of userAnswers) {
+        userAnswer.addEventListener("change", activeNextButton = (event) => {
+            nextButton.disabled = false;
+        });
+    };
+    for (const labelAnswer of labelAnswers) {
+        labelAnswer.addEventListener("click", enableNextButton = (event) => {
+            nextButton.disabled = false;
+            
+
+        })
+    }
+
+
+
+    // if next button is clicked
+    nextButton.addEventListener("click", showNextQuestion = (event) => {
+
+        if (indexQuestion == 14) {
+            nextButton.disabled = true;
+        } else {
+            indexQuestion++;
+            showQuestionsFunction(indexQuestion);
+            console.log(indexQuestion);
+        }
     })
+    return;
+}
+
+// Home page form
+form.addEventListener("submit", storeUserData = (event) => {
+    event.preventDefault();
+    // Store user data
+    const usernameValue = username.value;
+    const usermailValue = usermail.value; event.preventDefault();
+    console.log(usernameValue);
+    console.log(usermailValue);
+
+    localStorage.setItem("user-name", usernameValue);
+    localStorage.setItem("user-mail", usermailValue);
 
 
-})
-// Show question
-const quizBox = document.querySelector(".quiz__box");
-const showQuestions = document.createElement("button");
+    const userNameResponse = localStorage.getItem("user-name");
+    const userMailResponse = localStorage.getItem("user-mail");
+
+    console.log(userNameResponse);
+    console.log(userMailResponse);
+    homeContent.style.display = "none";
+    quizBox.classList.add("show");
+
+    form.reset();
+    showQuestionsFunction(0);
+
+});
+
+
+
+
 
 
 

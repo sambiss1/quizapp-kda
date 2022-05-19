@@ -153,8 +153,6 @@ form {
     input {
         margin: 0 2%;
     }
-
-
 }
 
 .cliked {
@@ -180,6 +178,22 @@ form {
     @extend .startButton;
     background: #EC880C;
     width: 50%;
+}
+
+/* Change content*/
+#home {
+    @extend .centereditems;
+    flex-direction: column;
+}
+
+#quiz__box {
+    @extend #home;
+    display: none;
+}
+
+#quiz__box.show {
+    @extend #home;
+    width: 100%;
 }
 
 @media screen and (max-width: 1024px) and (min-width:978px) {

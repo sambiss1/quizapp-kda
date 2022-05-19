@@ -16,7 +16,7 @@ body {
   font-family: "Inter", "Sans-serif";
 }
 
-.centereditems, .startbutton__container, html,
+.centereditems, #home, #quiz__box.show, #quiz__box, .startbutton__container, html,
 body {
   display: flex;
   justify-content: center;
@@ -156,6 +156,19 @@ form input[type=email] {
 .exitButton {
   background: #EC880C;
   width: 50%;
+}
+
+/* Change content*/
+#home, #quiz__box.show, #quiz__box {
+  flex-direction: column;
+}
+
+#quiz__box {
+  display: none;
+}
+
+#quiz__box.show {
+  width: 100%;
 }
 
 @media screen and (max-width: 1024px) and (min-width: 978px) {
