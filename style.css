@@ -16,7 +16,7 @@ body {
   font-family: "Inter", "Sans-serif";
 }
 
-.centereditems, #home, #quiz__box.show, #quiz__box, .startbutton__container, html,
+.centereditems, #home, #score__board, #quiz__box.show, #quiz__box, .startbutton__container, html,
 body {
   display: flex;
   justify-content: center;
@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   width: 40%;
   background: #fff;
-  height: 90%;
+  height: auto;
   padding: 5%;
 }
 
@@ -120,9 +120,10 @@ form input[type=email] {
 
 .progressbar {
   height: 0.6em;
-  width: 60%;
+  width: 100%;
   background: #028A3D;
   border-radius: 1em;
+  transition: width 1s ease-in;
 }
 
 .answer__container {
@@ -159,7 +160,7 @@ form input[type=email] {
 }
 
 /* Change content*/
-#home, #quiz__box.show, #quiz__box {
+#home, #score__board, #quiz__box.show, #quiz__box {
   flex-direction: column;
 }
 
@@ -169,6 +170,11 @@ form input[type=email] {
 
 #quiz__box.show {
   width: 100%;
+}
+
+/* Score board */
+#score__board {
+  display: none;
 }
 
 @media screen and (max-width: 1024px) and (min-width: 978px) {
