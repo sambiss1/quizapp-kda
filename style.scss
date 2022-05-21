@@ -42,7 +42,7 @@ body {
     flex-direction: column;
     width: 40%;
     background: #fff;
-    height: 90%;
+    height: auto;
     padding: 5%;
 }
 
@@ -57,7 +57,6 @@ p {
 
 form {
     width: 100%;
-
 
     input[type="text"],
     input[type="email"] {
@@ -138,9 +137,10 @@ form {
 
 .progressbar {
     height: .6em;
-    width: 60%;
+    width: 100%;
     background: $submit__button__bg;
     border-radius: 1em;
+    transition: width 1s ease-in;
 }
 
 .answer__container {
@@ -194,6 +194,12 @@ form {
 #quiz__box.show {
     @extend #home;
     width: 100%;
+}
+
+/* Score board */
+#score__board {
+    @extend #home;
+    display: none;
 }
 
 @media screen and (max-width: 1024px) and (min-width:978px) {

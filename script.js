@@ -5,12 +5,15 @@ const homeContent = document.querySelector("#home");
 
 // Question box
 const quizBox = document.querySelector("#quiz__box");
-//const form = document.createElement("form");
-//form.classList.add("main-form");
+
+// Score board 
+const scoreBoard = document.querySelector("#score__board");
+
+// Main form 
 const form = document.querySelector("form")
 
-
-
+// Back to home button 
+const backToHome = document.querySelector(".backToHome");
 
 // Create all questions 
 const questions = [
@@ -20,7 +23,7 @@ const questions = [
         correctAnswer: "Correct answer",
         answerSuggested: [
             "Correct answer",
-            "False anwswer",
+            "False answer",
             "False answer",
             "False answer"
         ]
@@ -170,13 +173,17 @@ const questions = [
     },
 ];
 
-
-
+// indexQuestion
 let indexQuestion = 0;
 
+// User score
+let userScore = 0;
+
+isChecked = false;
 
 // Function for showing questions 
 const showQuestionsFunction = (indexQuestion) => {
+
     // Question Title
     const questionTitle = document.querySelector(".question-title");
     // questionTitle.classList.add("presentation-text");
@@ -193,7 +200,7 @@ const showQuestionsFunction = (indexQuestion) => {
     // Question status
     let status = `<div class="status">` +
         `<p class="question__number">` + "Question " + questions[indexQuestion].id + "/15" + `</p>` +
-        `<div class="timercounter">` + "30" + `</div>` +
+        `<div class="timercounter">` + `</div>` +
         `</div>`;
     // Question progress
     let progressContainer = `<div class="progressbar__container">` +
@@ -203,19 +210,19 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Anwers suggested
     const answerContainer = `<div class="answer__container">` +
-        `<input type="radio" class="answer" name="answer" >` +
-        `<label for="answer">` + questions[indexQuestion].answerSuggested[3] + `</label>` +
+        `<input type="radio" class="answer" id="firstAnswerSuggested" name="answer" value="${questions[indexQuestion].answerSuggested[3]}">` +
+        `<label for="firstAnswerSuggested">` + questions[indexQuestion].answerSuggested[3] + `</label>` +
         `</div>` +
         `<div class="answer__container">` +
-        `<input type="radio" class="answer" name="answer" >` +
-        `<label for="answer">` + questions[indexQuestion].answerSuggested[1] + `</label>` +
+        `<input type="radio" class="answer" name="answer" id="secondAnswerSuggested" value="${questions[indexQuestion].answerSuggested[1]}">` +
+        `<label for="secondAnswerSuggested">` + questions[indexQuestion].answerSuggested[1] + `</label>` +
         `</div>` +
         `<div class="answer__container">` +
-        `<input type="radio" class="answer" name="answer" >` +
-        `<label for="answer">` + questions[indexQuestion].answerSuggested[2] + `</label>` +
+        `<input type="radio" class="answer" name="answer" id="thirdAnswerSuggested" value="${questions[indexQuestion].answerSuggested[2]}" >` +
+        `<label for="thirdAnswerSuggested">` + questions[indexQuestion].answerSuggested[2] + `</label>` +
         `</div>` + `<div class="answer__container">` +
-        `<input type="radio" class="answer" name="answer" >` +
-        `<label for="answer">` + questions[indexQuestion].answerSuggested[0] + `</label>` +
+        `<input type="radio" class="answer" name="answer" id="fourthAnswerSuggested" value="${questions[indexQuestion].answerSuggested[0]}">` +
+        `<label for="fourthAnswerSuggested">` + questions[indexQuestion].answerSuggested[0] + `</label>` +
         `</div>`;
 
     // Form buttons 
@@ -231,43 +238,103 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // User choice
     const answerChoice = document.querySelector(".answer__container");
-    const answer = document.querySelector(".answer");
-    const nextButton = document.querySelector(".nextButton");
+    // const answer = document.querySelector(".answer");
+    const nextQuestionButton = document.querySelector(".nextButton");
 
     // Get user selected choice
     // From radio button
-    const userAnswers = document.querySelectorAll("input[name='answer']")
+    const userAnswers = document.querySelectorAll("input[name='answer']");
 
-    // From radio label 
-    const labelAnswers = document.querySelectorAll(".answer__container");
+    // Check answer
 
+    const checkAnswer = () => {
+        for (let i = 0; i < userAnswers.length; i++) {
+            userAnswers[i].addEventListener("change", checked = (isChecked) => {
+                nextQuestionButton.disabled = false;
+                isChecked = true;
+                console.log(userAnswers[i].value);
+                let correctAnswer = questions[indexQuestion].correctAnswer;
+                if (userAnswers[i].value == correctAnswer) {
+                    if (isChecked == true) {
+                        userScore++;
+                        console.log("If is correct answer" + userScore);
+                        console.log(userScore);
+                        return;
+                    } else {
+                        userScore = userScore;
+                        console.log("User score if we recheck on true answer " + userScore);
+                    };
+                } else {
+                    userScore = userScore;
+                    console.log(userScore);
+                };
+                isChecked = false;
+            });
 
-    for (const userAnswer of userAnswers) {
-        userAnswer.addEventListener("change", activeNextButton = (event) => {
-            nextButton.disabled = false;
-        });
+        };
+
     };
-    for (const labelAnswer of labelAnswers) {
-        labelAnswer.addEventListener("click", enableNextButton = (event) => {
-            nextButton.disabled = false;
-            
 
-        })
-    }
-
-
-
-    // if next button is clicked
-    nextButton.addEventListener("click", showNextQuestion = (event) => {
-
-        if (indexQuestion == 14) {
-            nextButton.disabled = true;
-        } else {
+    // nextQuestion
+    const nextQuestion = () => {
+        if (indexQuestion < questions.length - 1) {
             indexQuestion++;
             showQuestionsFunction(indexQuestion);
-            console.log(indexQuestion);
+            console.log(userScore);
+        } else {
+            // quizBox.classList.remove("show");
+            // homeContent.style.display = 'none';
+            // scoreBoard.style.display = "flex";
+            nextQuestionButton.disabled = true;
+            // nextQuestionButton.style.display = "none";
         }
-    })
+        startProgress(100);
+        checkAnswer();
+        isChecked = false;
+    }
+    nextQuestionButton.addEventListener("click", showNextQuestion = (event) => {
+        nextQuestion();
+    });
+
+    // Timer
+    const timeCounter = document.querySelector(".timercounter");
+    let countTime = 0;
+    const startTime = (time) => {
+
+        const timer = () => {
+            timeCounter.textContent = time;
+            time--;
+            if (time < 9) {
+                let addZero = timeCounter.textContent;
+                timeCounter.textContent = "0" + addZero;
+            }
+            if (time <= 0) {
+                clearInterval(countTime);
+                nextQuestion();
+            }
+        }
+        countTime = setInterval(timer, 1000)
+    }
+
+    // Progress bar 
+    const progressBar = document.querySelector(".progressbar");
+    const startProgress = (timeBar) => {
+        const timerBar = () => {
+            timeBar -= 1.66666665; // Decremente progressbar
+            progressBar.style.width = timeBar + "%";
+            if (timeBar < 1) {
+                clearInterval(progressLine);
+            };
+
+        };
+        progressLine = setInterval(timerBar, 1000);
+    }
+
+    // start timer and progress bar decrement
+    startTime(59);
+    startProgress(100);
+    checkAnswer();
+
     return;
 }
 
@@ -284,11 +351,9 @@ form.addEventListener("submit", storeUserData = (event) => {
     localStorage.setItem("user-mail", usermailValue);
 
 
-    const userNameResponse = localStorage.getItem("user-name");
-    const userMailResponse = localStorage.getItem("user-mail");
+    const userName = localStorage.getItem("user-name");
+    const userMail = localStorage.getItem("user-mail");
 
-    console.log(userNameResponse);
-    console.log(userMailResponse);
     homeContent.style.display = "none";
     quizBox.classList.add("show");
 
@@ -298,8 +363,11 @@ form.addEventListener("submit", storeUserData = (event) => {
 });
 
 
+// Back to home function 
+backToHome.addEventListener("click", homeReturn = (event) => {
+    quizBox.classList.remove("show");
+    scoreBoard.style.display = "none";
+    homeContent.style.display = "flex";
+});
 
-
-
-
-
+const showUserScoreBoard = (event) => { }
