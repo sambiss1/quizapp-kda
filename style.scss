@@ -45,6 +45,7 @@ body {
     background: #fff;
     height: auto;
     padding: 5%;
+    // margin: $margin;
 }
 
 h1 {
@@ -281,15 +282,16 @@ input[type="radio"] {
     }
 }
 
-@media screen and(max-width: 977px) and (min-width: 769px) {
-    .container {
-        width: 60%;
-    }
-}
+// @media screen and (max-width: 977px) and (min-width: 769px) {
+//     .container {
+//         width: 60%;
+//     }
+// }
 
-@media screen and(max-width: 768px) {
+@media screen and (max-width: 768px) {
     .container {
-        width: 80%;
-        // height: 90vh;
+        width: 100% !important;
+        //height: 90vh !important;
+        margin: 5% 5% !important;
     }
 }
