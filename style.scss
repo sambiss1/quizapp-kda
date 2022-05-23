@@ -74,6 +74,10 @@ form {
     border: none;
     color: $white-color;
     font-size: $button__font-size;
+
+    &:hover {
+        @extend .elementHover;
+    }
 }
 
 .username__container {
@@ -165,8 +169,16 @@ form {
     input {
 
         margin: 0 2%;
+
         // border: .1em solid $submit__button__bg;
+        &:hover {
+            @extend .elementHover;
+        }
     }
+}
+
+.elementHover {
+    cursor: pointer;
 }
 
 input[type="radio"] {
@@ -186,16 +198,25 @@ input[type="radio"] {
     @extend .startButton;
     width: 50%;
     margin: 0 0 0 5%;
+
+    &:disabled {
+        background: rgba(2, 138, 61, 0.42);
+    }
+
+    &:hover {
+        @extend .elementHover;
+    }
 }
 
-.nextButton:disabled {
-    background: rgba(2, 138, 61, 0.42);
-}
 
 .exitButton {
     @extend .startButton;
     background: #EC880C;
     width: 50%;
+
+    &:hover {
+        @extend .elementHover;
+    }
 }
 
 /* Change content*/

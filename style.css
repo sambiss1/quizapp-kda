@@ -63,7 +63,6 @@ form input[type=email] {
   color: #fff;
   font-size: 1em;
 }
-
 .username__container {
   margin: 10% 0;
 }
@@ -145,6 +144,10 @@ form input[type=email] {
 .answer__container input {
   margin: 0 2%;
 }
+.elementHover, .startButton:hover, .exitButton:hover, .nextButton:hover, .backToHome:hover, .answer__container label:hover,
+.answer__container input:hover {
+  cursor: pointer;
+}
 
 input[type=radio] {
   border: 0.1em solid #028A3D;
@@ -162,16 +165,13 @@ input[type=radio] {
   width: 50%;
   margin: 0 0 0 5%;
 }
-
 .nextButton:disabled {
   background: rgba(2, 138, 61, 0.42);
 }
-
 .exitButton {
   background: #EC880C;
   width: 50%;
 }
-
 /* Change content*/
 #home, #score__board, #quiz__box.show, #quiz__box {
   flex-direction: column;

@@ -10,7 +10,7 @@ const quizBox = document.querySelector("#quiz__box");
 const scoreBoard = document.querySelector("#score__board");
 
 // Main form 
-const form = document.querySelector("form")
+const homePageForm = document.querySelector("form")
 
 // Back to home button 
 const backToHome = document.querySelector(".backToHome");
@@ -237,7 +237,6 @@ const showQuestionsFunction = (indexQuestion) => {
         `<div class="progressbar">` + `</div>`
         + `</div > `;
 
-
     // Anwers suggested
     const answerContainer = `<div class="answer__container">` +
         `<input type="radio" class="answer" id="firstAnswerSuggested" name="answer" value="${questions[indexQuestion].answerSuggested[3]}">` +
@@ -319,6 +318,8 @@ const showQuestionsFunction = (indexQuestion) => {
 
         }
     }
+
+    // Get user Score 
     const getUserScore = () => {
         let correctAnswer = questions[indexQuestion].correctAnswer;
         if (answerSelected == correctAnswer) {
@@ -372,27 +373,38 @@ const showQuestionsFunction = (indexQuestion) => {
     startTime(59);
     startProgress(100);
     checkAnswer();
+
+    // Exit button 
+    const exitButton = document.querySelector(".exitButton");
+
+    // Exit quiz 
+    const exitQuiz = () => {
+        getUserScore();
+        // showUserScoreBoard();
+        scoreBoard.style.display = "flex";
+        showUserScoreBoard();
+        quizBox.classList.remove("show");
+        nextQuestionButton.style.display = "none";
+    }
+    exitButton.addEventListener("click", exit = (event) => {
+        exitQuiz();
+    })
 }
 
 // Home page form
-form.addEventListener("submit", storeUserData = (event) => {
+homePageForm.addEventListener("submit", storeUserData = (event) => {
     event.preventDefault();
-    // Store user data
+    // Assign user data to variables 
     const usernameValue = username.value;
     const usermailValue = usermail.value;
 
-
+    // Store user data
     localStorage.setItem("user-name", usernameValue);
     localStorage.setItem("user-mail", usermailValue);
 
-
-    const userName = localStorage.getItem("user-name");
-    const userMail = localStorage.getItem("user-mail");
-
     homeContent.style.display = "none";
     quizBox.classList.add("show");
-
-    form.reset();
+    homePageForm.reset();
     showQuestionsFunction(indexQuestion);
 
 });
@@ -403,7 +415,9 @@ backToHome.addEventListener("click", homeReturn = (event) => {
     quizBox.classList.remove("show");
     scoreBoard.style.display = "none";
     homeContent.style.display = "flex";
-
+    homePageForm.reset();
+    userScore = 0;
+    answerSelected = "";
 });
 
 // 
@@ -418,7 +432,7 @@ const showUserScoreBoard = (event) => {
     const userNameResponse = `<h2>` + userName + `</h2>`;
     const userMailResponse = `<p>` + userMail + `</p>`;
     const userFinalScore = `<p class="userscore">` + userScore + `/15</p>`;
-   
+
     if (userScore <= 7) {
         icon__container.classList.add("failed");
         lasIcon.classList.add("la-times-circle");
