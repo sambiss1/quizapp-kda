@@ -20,181 +20,181 @@ const questions = [
     // Question 1
     {
         id: 1,
-        question: "Question 1",
-        correctAnswer: "Correct answer",
+        question: "Which of the following is an advantage of using JavaScript?",
+        correctAnswer: "All of the above",
         answerSuggested: [
-            "Correct answer",
-            "False answer",
-            "False answer",
-            "False answer"
+            "Immediate feedback to the visitors",
+            "Increased interactivity",
+            "All of the above",
+            "Less server interaction"
         ]
     },
     // Question 2
     {
         id: 2,
-        question: "Question 2",
-        correctAnswer: "Correct answer",
+        question: "How can you get the total number of arguments passed to a function ?",
+        correctAnswer: "Using arguments.length property",
         answerSuggested: [
-            "False anwswer",
-            "False answer",
-            "Correct answer",
-            "False answer"
+            "None of the above.",
+            "Using arguments.length property",
+            "Using args.length property",
+            "Both of the above"
         ]
     },
     // Question 3
     {
         id: 3,
-        question: "Question 3",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of String object creates an HTML hypertext link that requests another URL ?",
+        correctAnswer: "link()",
         answerSuggested: [
-            "False anwswer",
-            "False answer",
-            "False answer",
-            "Correct answer"
+            "link()",
+            "sub()",
+            "sup()",
+            "small()"
         ]
     },
     // Question 4
     {
         id: 4,
-        question: "Question 4",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of Array object applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value?",
+        correctAnswer: "reduce()",
         answerSuggested: [
-            "False anwswer",
-            "False answer",
-            "Correct answer",
-            "False answer"
+            "reduceRight()",
+            "reduce()",
+            "pop()",
+            "push()"
         ]
     },
     // Question 5
     {
         id: 5,
-        question: "Question 5",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of Array object extracts a section of an array and returns a new array?",
+        correctAnswer: "slice()",
         answerSuggested: [
-            "False anwswer",
-            "False answer",
-            "Correct answer",
-            "False answer"
+            "slice()",
+            "reverse()",
+            "shift()",
+            "some()"
         ]
     },
     // Question 6
     {
         id: 6,
-        question: "Question 6",
-        correctAnswer: "Correct answer",
+        question: "Which built-in method reverses the order of the elements of an array?",
+        correctAnswer: "reverse()",
         answerSuggested: [
-            "Correct answer",
-            "False anwswer",
-            "False answer",
-            "False answer"
+            "changeOrder(order)",
+            "sort(order)",
+            "reverse()",
+            "None of the above"
         ]
     },
     //QUestion 7
     {
         id: 7,
-        question: "Question 7",
-        correctAnswer: "Correct answer",
+        question: "Which built-in method calls a function for each element in the array?",
+        correctAnswer: "forEach()",
         answerSuggested: [
-            "Correct answer",
-            "False anwswer",
-            "False answer",
-            "False answer"
+            "loop()",
+            "forEach()",
+            "while()",
+            "None of the above"
         ]
     },
     // Question 8
     {
         id: 8,
-        question: "Question 8",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of String object splits a String object into an array of strings by separating the string into substrings?",
+        correctAnswer: "split()",
         answerSuggested: [
-            "False anwswer",
-            "False answer",
-            "Correct answer",
-            "False answer"
+            "split()",
+            "slice()",
+            "replace()",
+            "search()"
         ]
     },
     // Question 9
     {
         id: 9,
-        question: "Question 9",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of Number object defines how many total digits to display of a number?",
+        correctAnswer: "toPrecision()",
         answerSuggested: [
-            "False anwswer",
-            "Correct answer",
-            "False answer",
-            "False answer"
+            "toExponential()",
+            "toLocaleString()",
+            "toPrecision()",
+            "toFixed()"
         ]
     },
     // Question 10
     {
         id: 10,
-        question: "Question 10",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of String object returns the calling string value converted to upper case?",
+        correctAnswer: "toUpperCase()",
         answerSuggested: [
-            "False anwswer",
-            "Correct answer",
-            "False answer",
-            "False answer"
+            "toLocaleUpperCase()",
+            "toUpperCase()",
+            "substring()",
+            "toString()",
         ]
     },
     // Question 11
     {
         id: 11,
-        question: "Question 11",
-        correctAnswer: "Correct answer",
+        question: "Which built-in method adds one or more elements to the end of an array and returns the new length of the array?",
+        correctAnswer: "push()",
         answerSuggested: [
-            "Correct answer",
-            "False anwswer",
-            "False answer",
-            "False answer"
+            "last()",
+            "None of the above.",
+            "push()",
+            "put()"
         ]
     },
     // Question 12
     {
         id: 12,
-        question: "Question 13",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of Array object returns a new array comprised of this array joined with other array(s) and/or value(s)?",
+        correctAnswer: "concat()",
         answerSuggested: [
-            "False anwswer",
-            "Correct answer",
-            "False answer",
-            "False answer"
+            "some()",
+            "pop()",
+            "concat()",
+            "push()"
         ]
     },
     // Question 13
     {
         id: 13,
-        question: "Question 13",
-        correctAnswer: "Correct answer",
+        question: "Which of the following function of Array object joins all elements of an array into a string?",
+        correctAnswer: "join()",
         answerSuggested: [
-            "False anwswer",
-            "Correct answer",
-            "False answer",
-            "False answer"
+            "concat()",
+            "join()",
+            "pop()",
+            "map()"
         ]
     },
     // Question 14
     {
         id: 14,
-        question: "Question 14",
-        correctAnswer: "Correct answer",
+        question: "Which of the following is the correct syntax to redirect a url using JavaScript?",
+        correctAnswer: "window.location='http://www.newlocation.com'",
         answerSuggested: [
-            "False anwswer",
-            "Correct answer",
-            "False answer",
-            "False answer"
+            "document.location='http://www.newlocation.com'",
+            "navigator.location='http://www.newlocation.com'",
+            "browser.location='http://www.newlocation.com'",
+            "window.location='http://www.newlocation.com'"
         ]
     },
     // Question 15
     {
         id: 15,
-        question: "Question 15",
-        correctAnswer: "Correct answer",
+        question: "Which of the following is correct about features of JavaScript?",
+        correctAnswer: "All of the above",
         answerSuggested: [
-            "False anwswer",
-            "False answer",
-            "Correct answer",
-            "False answer"
+            "JavaScript is a lightweight, interpreted programming language",
+            "JavaScript is designed for creating network-centric applications",
+            "All of the above",
+            "JavaScript is complementary to and integrated with Java"
         ]
     },
 ];

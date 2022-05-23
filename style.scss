@@ -24,6 +24,7 @@ body {
     background: linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
     background-blend-mode: darken;
     font-family: "Inter", "Sans-serif";
+    padding: $padding;
 }
 
 .centereditems {
@@ -223,11 +224,15 @@ input[type="radio"] {
 #home {
     @extend .centereditems;
     flex-direction: column;
+    height: 100%;
+    width: 90%;
 }
 
 #quiz__box {
     @extend #home;
     display: none;
+    height: 100%;
+    width: 90%;
     // opacity: 0;
 }
 
