@@ -30,6 +30,7 @@ body {
 .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   width: 40%;
   background: #fff;
@@ -91,6 +92,10 @@ form input[type=email] {
   margin: 5% 0;
 }
 
+.lnr {
+  font-weight: 900 !important;
+}
+
 .success {
   color: #028A3D;
 }
@@ -143,7 +148,14 @@ form input[type=email] {
 .answer__container label,
 .answer__container input {
   margin: 0 2%;
+  border-radius: 0;
 }
+input[type=button],
+input[type=submit],
+button {
+  box-shadow: 0px 4px 2px 1px #C4C4C4;
+}
+
 .elementHover, .startButton:hover, .exitButton:hover, .nextButton:hover, .backToHome:hover, .answer__container label:hover,
 .answer__container input:hover {
   cursor: pointer;
@@ -175,6 +187,7 @@ input[type=radio] {
 /* Change content*/
 #home, #score__board, #quiz__box.show, #quiz__box {
   flex-direction: column;
+  height: fit-content;
 }
 
 #quiz__box {
@@ -203,7 +216,17 @@ input[type=radio] {
 }
 @media screen and (max-width: 1024px) and (min-width: 978px) {
   .container {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 977px) and (min-width: 769px) {
+  .container {
     width: 60%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
   }
 }
 
