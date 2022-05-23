@@ -296,20 +296,16 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // nextQuestion
     const nextQuestion = () => {
-
+        clearInterval(countTime);
+        countTime = 0;
         if (indexQuestion < questions.length - 1) {
             isChecked = false;
-            clearInterval(countTime);
-            countTime = 0;
             indexQuestion++;
             showQuestionsFunction(indexQuestion);
             startProgress(100);
             getUserScore();
         } else {
-            // nextQuestionButton.textContent = "Show Result";
-            // homeContent.style.display = "none";
             getUserScore();
-            // userScore = userScore;
             console.log("On last question : " + userScore);
             scoreBoard.style.display = "flex";
             showUserScoreBoard();
@@ -333,7 +329,6 @@ const showQuestionsFunction = (indexQuestion) => {
     }
     nextQuestionButton.addEventListener("click", showNextQuestion = (event) => {
         nextQuestion();
-
     });
 
     // Timer
@@ -379,8 +374,9 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Exit quiz 
     const exitQuiz = () => {
+        clearInterval(countTime);
+        countTime = 0;
         getUserScore();
-        // showUserScoreBoard();
         scoreBoard.style.display = "flex";
         showUserScoreBoard();
         quizBox.classList.remove("show");
@@ -391,6 +387,14 @@ const showQuestionsFunction = (indexQuestion) => {
     })
 }
 
+let nameErrorMessage = document.createElement("span");
+let mailErrorMessage = document.createElement("span");
+nameErrorMessage.textContent = "";
+mailErrorMessage.textContent = "";
+
+username.after(nameErrorMessage);
+usermail.after(mailErrorMessage);
+
 // Home page form
 homePageForm.addEventListener("submit", storeUserData = (event) => {
     event.preventDefault();
@@ -398,14 +402,35 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
     const usernameValue = username.value;
     const usermailValue = usermail.value;
 
-    // Store user data
-    localStorage.setItem("user-name", usernameValue);
-    localStorage.setItem("user-mail", usermailValue);
 
-    homeContent.style.display = "none";
-    quizBox.classList.add("show");
-    homePageForm.reset();
-    showQuestionsFunction(indexQuestion);
+    nameErrorMessage.style.color = "red";
+    mailErrorMessage.style.color = "red";
+    // Validator
+    if (username.value == "") {
+        username.style.border = ".1em solid red";
+        nameErrorMessage.textContent = "N’oubliez pas de renseigner votre nom avant de commencer le Quiz.";
+
+        if (usermail.value == "") {
+            usermail.style.border = ".1em solid red";
+            mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
+            for (let i = 0; i < usermailValue.length; i++) {
+                if (usermailValue[i] != "@") {
+                    usermail.style.border = ".1em solid red";
+                    mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
+                }
+            }
+        }
+    }
+    else {
+        // Store user data
+        localStorage.setItem("user-name", usernameValue);
+        localStorage.setItem("user-mail", usermailValue);
+
+        homeContent.style.display = "none";
+        quizBox.classList.add("show");
+        homePageForm.reset();
+        showQuestionsFunction(indexQuestion);
+    }
 
 });
 
@@ -425,7 +450,7 @@ const username__response = document.querySelector(".username__response");
 const usermail__response = document.querySelector(".usermail__response");
 const userscore__container = document.querySelector(".userscore__container");
 const icon__container = document.querySelector(".icon__container");
-const lasIcon = document.querySelector(".las");
+const lasIcon = document.querySelector(".lnr");
 const showUserScoreBoard = (event) => {
     const userName = localStorage.getItem("user-name");
     const userMail = localStorage.getItem("user-mail");
@@ -435,10 +460,10 @@ const showUserScoreBoard = (event) => {
 
     if (userScore <= 7) {
         icon__container.classList.add("failed");
-        lasIcon.classList.add("la-times-circle");
+        lasIcon.classList.add("lnr-cross-circle");
     } else {
         icon__container.classList.add("success");
-        lasIcon.classList.add("la-check-circle");
+        lasIcon.classList.add("lnr-checkmark-circle");
     }
     username__response.innerHTML = userNameResponse;
     usermail__response.innerHTML = userMailResponse;

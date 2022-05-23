@@ -39,6 +39,7 @@ body {
 .container {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     width: 40%;
     background: #fff;
@@ -107,9 +108,13 @@ form {
 }
 
 .icon__container {
-
     font-size: 8em;
     margin: 5% 0;
+
+}
+
+.lnr {
+    font-weight: 900 !important;
 }
 
 .success {
@@ -169,12 +174,20 @@ form {
     input {
 
         margin: 0 2%;
+        //border: .1em solid $submit__button__bg;
+        border-radius: 0;
 
-        // border: .1em solid $submit__button__bg;
         &:hover {
             @extend .elementHover;
         }
     }
+}
+
+input[type="button"],
+input[type="submit"],
+button {
+
+    box-shadow: 0px 4px 2px 1px #C4C4C4;
 }
 
 .elementHover {
@@ -223,6 +236,7 @@ input[type="radio"] {
 #home {
     @extend .centereditems;
     flex-direction: column;
+    height: fit-content;
 }
 
 #quiz__box {
@@ -263,6 +277,19 @@ input[type="radio"] {
 
 @media screen and (max-width: 1024px) and (min-width:978px) {
     .container {
+        width: 50%;
+    }
+}
+
+@media screen and(max-width: 977px) and (min-width: 769px) {
+    .container {
         width: 60%;
+    }
+}
+
+@media screen and(max-width: 768px) {
+    .container {
+        width: 80%;
+        // height: 90vh;
     }
 }
