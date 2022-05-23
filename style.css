@@ -223,10 +223,15 @@ input[type=radio] {
     width: 50%;
   }
 }
+@media screen and (max-width: 977px) and (min-width: 769px) {
+  .container {
+    width: 60%;
+  }
+}
 @media screen and (max-width: 768px) {
   .container {
     width: 100% !important;
-    margin: 5% 5% !important;
+    margin: 0 5% !important;
   }
 }
 
