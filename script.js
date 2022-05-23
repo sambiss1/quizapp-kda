@@ -17,6 +17,7 @@ const backToHome = document.querySelector(".backToHome");
 
 // Create all questions 
 const questions = [
+    // Question 1
     {
         id: 1,
         question: "Question 1",
@@ -28,6 +29,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 2
     {
         id: 2,
         question: "Question 2",
@@ -39,6 +41,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 3
     {
         id: 3,
         question: "Question 3",
@@ -50,6 +53,7 @@ const questions = [
             "Correct answer"
         ]
     },
+    // Question 4
     {
         id: 4,
         question: "Question 4",
@@ -61,6 +65,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 5
     {
         id: 5,
         question: "Question 5",
@@ -72,6 +77,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 6
     {
         id: 6,
         question: "Question 6",
@@ -83,6 +89,7 @@ const questions = [
             "False answer"
         ]
     },
+    //QUestion 7
     {
         id: 7,
         question: "Question 7",
@@ -94,6 +101,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 8
     {
         id: 8,
         question: "Question 8",
@@ -105,6 +113,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 9
     {
         id: 9,
         question: "Question 9",
@@ -116,6 +125,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 10
     {
         id: 10,
         question: "Question 10",
@@ -127,6 +137,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 11
     {
         id: 11,
         question: "Question 11",
@@ -138,6 +149,19 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 12
+    {
+        id: 12,
+        question: "Question 13",
+        correctAnswer: "Correct answer",
+        answerSuggested: [
+            "False anwswer",
+            "Correct answer",
+            "False answer",
+            "False answer"
+        ]
+    },
+    // Question 13
     {
         id: 13,
         question: "Question 13",
@@ -149,6 +173,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 14
     {
         id: 14,
         question: "Question 14",
@@ -160,6 +185,7 @@ const questions = [
             "False answer"
         ]
     },
+    // Question 15
     {
         id: 15,
         question: "Question 15",
@@ -179,7 +205,11 @@ let indexQuestion = 0;
 // User score
 let userScore = 0;
 
-isChecked = false;
+// Check if answer is checked 
+let isChecked = false;
+
+// Answer selected variables 
+let answerSelected = "";
 
 // Function for showing questions 
 const showQuestionsFunction = (indexQuestion) => {
@@ -237,7 +267,7 @@ const showQuestionsFunction = (indexQuestion) => {
     questionForm.innerHTML += buttonsContainer;
 
     // User choice
-    const answerChoice = document.querySelector(".answer__container");
+    const answerChoice = document.querySelectorAll(".answer__container");
     // const answer = document.querySelector(".answer");
     const nextQuestionButton = document.querySelector(".nextButton");
 
@@ -246,61 +276,69 @@ const showQuestionsFunction = (indexQuestion) => {
     const userAnswers = document.querySelectorAll("input[name='answer']");
 
     // Check answer
-
-    const checkAnswer = () => {
+    const checkAnswer = (isChecked) => {
         for (let i = 0; i < userAnswers.length; i++) {
-            userAnswers[i].addEventListener("change", checked = (isChecked) => {
-                nextQuestionButton.disabled = false;
+            userAnswers[i].addEventListener("change", changeAnswer = (isChecked) => {
                 isChecked = true;
-                console.log(userAnswers[i].value);
-                let correctAnswer = questions[indexQuestion].correctAnswer;
-                if (userAnswers[i].value == correctAnswer) {
-                    if (isChecked == true) {
-                        userScore++;
-                        console.log("If is correct answer" + userScore);
-                        console.log(userScore);
-                        return;
-                    } else {
-                        userScore = userScore;
-                        console.log("User score if we recheck on true answer " + userScore);
-                    };
+                if (isChecked != false) {
+                    nextQuestionButton.disabled = false;
+                    answerSelected = userAnswers[i].value;
+                    console.log("Answer selected : " + answerSelected);
+                    console.log("On cheked " + isChecked);
                 } else {
-                    userScore = userScore;
-                    console.log(userScore);
-                };
-                isChecked = false;
+                    answerSelected = 0;
+                }
             });
 
         };
 
+        return;
     };
 
     // nextQuestion
     const nextQuestion = () => {
+
         if (indexQuestion < questions.length - 1) {
+            isChecked = false;
+            clearInterval(countTime);
+            countTime = 0;
             indexQuestion++;
             showQuestionsFunction(indexQuestion);
-            console.log(userScore);
+            startProgress(100);
+            getUserScore();
         } else {
-            // quizBox.classList.remove("show");
-            // homeContent.style.display = 'none';
-            // scoreBoard.style.display = "flex";
-            nextQuestionButton.disabled = true;
-            // nextQuestionButton.style.display = "none";
+            // nextQuestionButton.textContent = "Show Result";
+            // homeContent.style.display = "none";
+            getUserScore();
+            // userScore = userScore;
+            console.log("On last question : " + userScore);
+            scoreBoard.style.display = "flex";
+            showUserScoreBoard();
+            quizBox.classList.remove("show");
+            nextQuestionButton.style.display = "none";
+
         }
-        startProgress(100);
-        checkAnswer();
-        isChecked = false;
+    }
+    const getUserScore = () => {
+        let correctAnswer = questions[indexQuestion].correctAnswer;
+        if (answerSelected == correctAnswer) {
+            userScore++;
+            answerSelected = "";
+            console.log("Return if is Checked " + userScore);
+        } else {
+            userScore = userScore;
+            console.log("Return if isnot Checked :" + userScore);
+        }
     }
     nextQuestionButton.addEventListener("click", showNextQuestion = (event) => {
         nextQuestion();
+
     });
 
     // Timer
     const timeCounter = document.querySelector(".timercounter");
     let countTime = 0;
     const startTime = (time) => {
-
         const timer = () => {
             timeCounter.textContent = time;
             time--;
@@ -313,7 +351,8 @@ const showQuestionsFunction = (indexQuestion) => {
                 nextQuestion();
             }
         }
-        countTime = setInterval(timer, 1000)
+        countTime = setInterval(timer, 1000);
+
     }
 
     // Progress bar 
@@ -325,7 +364,6 @@ const showQuestionsFunction = (indexQuestion) => {
             if (timeBar < 1) {
                 clearInterval(progressLine);
             };
-
         };
         progressLine = setInterval(timerBar, 1000);
     }
@@ -334,8 +372,6 @@ const showQuestionsFunction = (indexQuestion) => {
     startTime(59);
     startProgress(100);
     checkAnswer();
-
-    return;
 }
 
 // Home page form
@@ -343,9 +379,8 @@ form.addEventListener("submit", storeUserData = (event) => {
     event.preventDefault();
     // Store user data
     const usernameValue = username.value;
-    const usermailValue = usermail.value; event.preventDefault();
-    console.log(usernameValue);
-    console.log(usermailValue);
+    const usermailValue = usermail.value;
+
 
     localStorage.setItem("user-name", usernameValue);
     localStorage.setItem("user-mail", usermailValue);
@@ -358,7 +393,7 @@ form.addEventListener("submit", storeUserData = (event) => {
     quizBox.classList.add("show");
 
     form.reset();
-    showQuestionsFunction(0);
+    showQuestionsFunction(indexQuestion);
 
 });
 
@@ -368,6 +403,30 @@ backToHome.addEventListener("click", homeReturn = (event) => {
     quizBox.classList.remove("show");
     scoreBoard.style.display = "none";
     homeContent.style.display = "flex";
+
 });
 
-const showUserScoreBoard = (event) => { }
+// 
+const username__response = document.querySelector(".username__response");
+const usermail__response = document.querySelector(".usermail__response");
+const userscore__container = document.querySelector(".userscore__container");
+const icon__container = document.querySelector(".icon__container");
+const lasIcon = document.querySelector(".las");
+const showUserScoreBoard = (event) => {
+    const userName = localStorage.getItem("user-name");
+    const userMail = localStorage.getItem("user-mail");
+    const userNameResponse = `<h2>` + userName + `</h2>`;
+    const userMailResponse = `<p>` + userMail + `</p>`;
+    const userFinalScore = `<p class="userscore">` + userScore + `/15</p>`;
+   
+    if (userScore <= 7) {
+        icon__container.classList.add("failed");
+        lasIcon.classList.add("la-times-circle");
+    } else {
+        icon__container.classList.add("success");
+        lasIcon.classList.add("la-check-circle");
+    }
+    username__response.innerHTML = userNameResponse;
+    usermail__response.innerHTML = userMailResponse;
+    userscore__container.innerHTML = userFinalScore;
+}

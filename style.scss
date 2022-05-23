@@ -140,7 +140,18 @@ form {
     width: 100%;
     background: $submit__button__bg;
     border-radius: 1em;
-    transition: width 1s ease-in;
+    transition: width .8s ease-in;
+    // animation: progress 100s;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 .answer__container {
@@ -148,14 +159,21 @@ form {
     border: .1em solid #c4c4c4;
     padding: 3% $padding;
     margin: 10% 0;
+    display: flex;
 
     label,
     input {
+
         margin: 0 2%;
+        // border: .1em solid $submit__button__bg;
     }
 }
 
-.cliked {
+input[type="radio"] {
+    border: .1em solid $submit__button__bg;
+}
+
+.clicked {
     border: .1em solid $submit__button__bg;
 }
 
@@ -189,17 +207,37 @@ form {
 #quiz__box {
     @extend #home;
     display: none;
+    // opacity: 0;
 }
 
 #quiz__box.show {
     @extend #home;
     width: 100%;
+    // animation: fadeOut .3s;
+    // opacity: 1;
+    // transition: all .3s ease;
 }
 
 /* Score board */
 #score__board {
     @extend #home;
     display: none;
+    // opacity: 0;
+}
+
+// Animation 
+@keyframes fadeOut {
+    from {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 1024px) and (min-width:978px) {
