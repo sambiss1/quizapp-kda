@@ -14,6 +14,7 @@ body {
   background: linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
   background-blend-mode: darken;
   font-family: "Inter", "Sans-serif";
+  padding: 5%;
 }
 
 .centereditems, #home, #score__board, #quiz__box.show, #quiz__box, .startbutton__container, html,
@@ -187,11 +188,14 @@ input[type=radio] {
 /* Change content*/
 #home, #score__board, #quiz__box.show, #quiz__box {
   flex-direction: column;
-  height: fit-content;
+  height: 100%;
+  width: 90%;
 }
 
 #quiz__box {
   display: none;
+  height: 100%;
+  width: 90%;
 }
 
 #quiz__box.show {
@@ -226,7 +230,8 @@ input[type=radio] {
 }
 @media screen and (max-width: 768px) {
   .container {
-    width: 80%;
+    width: 100% !important;
+    margin: 0 5% !important;
   }
 }
 

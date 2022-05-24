@@ -24,6 +24,7 @@ body {
     background: linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
     background-blend-mode: darken;
     font-family: "Inter", "Sans-serif";
+    padding: $padding;
 }
 
 .centereditems {
@@ -45,6 +46,7 @@ body {
     background: #fff;
     height: auto;
     padding: 5%;
+
 }
 
 h1 {
@@ -236,12 +238,15 @@ input[type="radio"] {
 #home {
     @extend .centereditems;
     flex-direction: column;
-    height: fit-content;
+    height: 100%;
+    width: 90%;
 }
 
 #quiz__box {
     @extend #home;
     display: none;
+    height: 100%;
+    width: 90%;
     // opacity: 0;
 }
 
@@ -281,15 +286,15 @@ input[type="radio"] {
     }
 }
 
-@media screen and(max-width: 977px) and (min-width: 769px) {
+@media screen and (max-width: 977px) and (min-width: 769px) {
     .container {
         width: 60%;
     }
 }
 
-@media screen and(max-width: 768px) {
+@media screen and (max-width: 768px) {
     .container {
-        width: 80%;
-        // height: 90vh;
+        width: 100% !important;
+        margin: 0 5% !important;
     }
 }
