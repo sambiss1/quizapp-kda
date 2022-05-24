@@ -276,42 +276,10 @@ const showQuestionsFunction = (indexQuestion) => {
     // From radio button
     const userAnswers = document.querySelectorAll("input[name='answer']");
 
-    // Check answer
-    // const checkAnswer = (isChecked) => {
-    //     for (let i = 0; i < userAnswers.length; i++) {
-    //         userAnswers[i].addEventListener("change", changeAnswer = (isChecked) => {
-    //             isChecked = true;
-    //             if (isChecked != false) {
-    //                 nextQuestionButton.disabled = false;
-    //                 answerSelected = userAnswers[i].value;
-    //                 console.log("Answer selected : " + answerSelected);
-    //                 console.log("On cheked " + isChecked);
-    //             } else {
-    //                 answerSelected = "";
-    //             }
-    //         });
-
-    //     };
-
-    //     return;
-    // };
 
     const checkAnswer = () => {
         for (const answer of userAnswers) {
             answer.addEventListener("click", changeAnswer = (isChecked) => {
-                // answerClicked = true;
-                // for (const answerContent of answerChoice) {
-                //     answerContent.addEventListener("click", () => {
-                //         console.log(answerClicked);
-                //         if (answerClicked == true) {
-                //             answerContent.classList.add("clicked");
-                //         }
-                //         else {
-                //             answerContent.classList.remove("clicked");
-                //         }
-                //     })
-                // };
-
                 isChecked = true;
                 if (isChecked != false) {
                     // answer.parentElement.classList.add("clicked");
