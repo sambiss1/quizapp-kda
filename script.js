@@ -245,17 +245,21 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Anwers suggested
     const answerContainer = `<div class="answer__container">` +
+        
         `<input type="radio" class="answer" id="firstAnswerSuggested" name="answer" value="${questions[indexQuestion].answerSuggested[3]}">` +
         `<label for="firstAnswerSuggested"> ${questions[indexQuestion].answerSuggested[3]} </label>` +
         `</div>` +
         `<div class="answer__container">` +
+        
         `<input type="radio" class="answer" name="answer" id="secondAnswerSuggested" value="${questions[indexQuestion].answerSuggested[1]}">` +
         `<label for="secondAnswerSuggested"> ${questions[indexQuestion].answerSuggested[1]} </label>` +
         `</div>` +
         `<div class="answer__container">` +
+        
         `<input type="radio" class="answer" name="answer" id="thirdAnswerSuggested" value="${questions[indexQuestion].answerSuggested[2]}" >` +
         `<label for="thirdAnswerSuggested">  ${questions[indexQuestion].answerSuggested[2]}</label>` +
         `</div>` + `<div class="answer__container">` +
+        
         `<input type="radio" class="answer" name="answer" id="fourthAnswerSuggested" value="${questions[indexQuestion].answerSuggested[0]}">` +
         `<label for="fourthAnswerSuggested">${questions[indexQuestion].answerSuggested[0]}</label>` +
         `</div>`;
@@ -402,7 +406,7 @@ const showQuestionsFunction = (indexQuestion) => {
         // Time for decrementation progress bar
         const widthTimerBar = () => {
             // Decremente progressbar
-            widthBar -= 1.66666665;
+            widthBar -= 1.66666665;//0.833333325;
             // Here decremantation is on progress bar width
             progressBar.style.width = widthBar + "%";
 
@@ -505,7 +509,7 @@ const username__response = document.querySelector(".username__response");
 const usermail__response = document.querySelector(".usermail__response");
 const userscore__container = document.querySelector(".userscore__container");
 const icon__container = document.querySelector(".icon__container");
-const lasIcon = document.querySelector(".lnr");
+const lasIcon = document.querySelector(".lni");
 
 // Function for get and show user final score
 const showUserScoreBoard = (event) => {
@@ -525,14 +529,14 @@ const showUserScoreBoard = (event) => {
     if (userScore <= 7) {
         // Show failed icon
         icon__container.classList.add("failed");
-        lasIcon.classList.add("lnr-cross-circle");
+        lasIcon.classList.add("lni-cross-circle");
 
 
     } else {
         // Else 
         // Show success icon
         icon__container.classList.add("success");
-        lasIcon.classList.add("lnr-checkmark-circle");
+        lasIcon.classList.add("lni-checkmark-circle");
     }
 
     // Add it to the DOM
