@@ -245,21 +245,21 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Anwers suggested
     const answerContainer = `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" id="firstAnswerSuggested" name="answer" value="${questions[indexQuestion].answerSuggested[3]}">` +
         `<label for="firstAnswerSuggested"> ${questions[indexQuestion].answerSuggested[3]} </label>` +
         `</div>` +
         `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" name="answer" id="secondAnswerSuggested" value="${questions[indexQuestion].answerSuggested[1]}">` +
         `<label for="secondAnswerSuggested"> ${questions[indexQuestion].answerSuggested[1]} </label>` +
         `</div>` +
         `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" name="answer" id="thirdAnswerSuggested" value="${questions[indexQuestion].answerSuggested[2]}" >` +
         `<label for="thirdAnswerSuggested">  ${questions[indexQuestion].answerSuggested[2]}</label>` +
         `</div>` + `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" name="answer" id="fourthAnswerSuggested" value="${questions[indexQuestion].answerSuggested[0]}">` +
         `<label for="fourthAnswerSuggested">${questions[indexQuestion].answerSuggested[0]}</label>` +
         `</div>`;
@@ -290,17 +290,13 @@ const showQuestionsFunction = (indexQuestion) => {
     const checkAnswer = () => {
         for (const answer of userAnswers) {
             answer.addEventListener("click", changeAnswer = (isChecked) => {
-                // Change isChecked value 
-                isChecked = true;
-                if (isChecked != false) {
-                    // Enable nextButton
-                    nextQuestionButton.disabled = false;
 
-                    // Store answer value in ohter variable 
-                    answerSelected = answer.value;
-                } else {
-                    answerSelected = "";
-                };
+                // Enable nextButton
+                nextQuestionButton.disabled = false;
+
+                // Store answer value in ohter variable 
+                answerSelected = answer.value;
+
             });
         };
     };
@@ -370,6 +366,28 @@ const showQuestionsFunction = (indexQuestion) => {
         nextQuestion();
     });
 
+
+    // Progress bar 
+    const progressBar = document.querySelector(".progressbar");
+    let progressLine = 0;
+    // Function for starting progress bar
+    const startProgress = (widthBar) => {
+        // Time for decrementation progress bar
+        const widthTimerBar = () => {
+            // Decremente progressbar
+            widthBar -= 1.66666665;
+            // Here decremantation is on progress bar width
+            progressBar.style.width = widthBar + "%";
+
+            // If progressbar widthBar is less than 1, we stop 
+            if (widthBar < 1) {
+                clearInterval(progressLine);
+            };
+
+        };
+        progressLine = setInterval(widthTimerBar, 1000);
+    };
+
     // Timer
     const timeCounter = document.querySelector(".timercounter");
     // Declare timer value to 0
@@ -382,6 +400,14 @@ const showQuestionsFunction = (indexQuestion) => {
 
             // Decremente time
             time--;
+
+            // Change progressbar color
+            if (time < 30) {
+                progressBar.style.background = "#FF8C00 !important";
+            };
+            if (time <= 15) {
+                progressBar.style.background = "#FF0000 !important";
+            };
 
             // If time is less than 9 we add zero to number(integer)
             if (time < 9) {
@@ -398,25 +424,6 @@ const showQuestionsFunction = (indexQuestion) => {
         countTime = setInterval(timer, 1000);
     };
 
-    // Progress bar 
-    const progressBar = document.querySelector(".progressbar");
-    let progressLine = 0;
-    // Function for starting progress bar
-    const startProgress = (widthBar) => {
-        // Time for decrementation progress bar
-        const widthTimerBar = () => {
-            // Decremente progressbar
-            widthBar -= 1.66666665;//0.833333325;
-            // Here decremantation is on progress bar width
-            progressBar.style.width = widthBar + "%";
-
-            // If progressbar widthBar is less than 1, we stop 
-            if (widthBar < 1) {
-                clearInterval(progressLine);
-            };
-        };
-        progressLine = setInterval(widthTimerBar, 1000);
-    };
 
     // start timer and progress bar decrement
     startTime(59);
@@ -496,12 +503,7 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
 
 // Back to home function 
 backToHome.addEventListener("click", homeReturn = (event) => {
-    quizBox.classList.remove("show");
-    scoreBoard.style.display = "none";
-    homeContent.style.display = "flex";
-    homePageForm.reset();
-    userScore = 0;
-    answerSelected = "";
+    window.location.reload();
 });
 
 // User score board elements
