@@ -28,7 +28,7 @@ body {
   text-decoration: none;
 }
 
-.container {
+.container, #home, #score__board, #quiz__box.show, #quiz__box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,7 @@ form input[type=email] {
   margin: 5% 0 0;
 }
 
-/* Success page */
+/* Result  page */
 .backToHome {
   background-color: #0880D6;
   margin: 5% 0;
@@ -93,7 +93,7 @@ form input[type=email] {
   margin: 5% 0;
 }
 
-.lnr {
+.lni {
   font-weight: 900 !important;
 }
 
@@ -113,14 +113,14 @@ form input[type=email] {
 .status, .buttonContainer {
   display: flex;
   justify-content: space-between;
-  margin: 5% 0;
+  margin: 1em 0 0;
 }
 
 .progressbar__container {
   width: 100%;
   background: #DDDDDD;
   border-radius: 1em;
-  margin: 5% 0;
+  margin: 1em 0;
 }
 
 .progressbar {
@@ -128,7 +128,7 @@ form input[type=email] {
   width: 100%;
   background: #028A3D;
   border-radius: 1em;
-  transition: width 0.8s ease-in;
+  transition: width 1s ease-in;
 }
 
 @keyframes progress {
@@ -139,18 +139,42 @@ form input[type=email] {
     width: 0%;
   }
 }
+.question-form {
+  padding: 0;
+}
+
 .answer__container {
-  width: 100%;
-  border: 0.1em solid #c4c4c4;
-  padding: 3% 5%;
-  margin: 10% 0;
   display: flex;
+  position: relative;
 }
 .answer__container label,
 .answer__container input {
   margin: 0 2%;
-  border-radius: 0;
 }
+.answer__container label {
+  width: 100%;
+  border: 0.1em solid #c4c4c4;
+  padding: 2% 10%;
+  margin: 1em 0;
+}
+.answer__container input[type=radio] {
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  appearance: none;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  border: 0.1em solid #C4C4C4;
+}
+.answer__container input[type=radio]:checked {
+  background-color: #028A3D;
+  border: 0.1em solid #028A3D;
+}
+.answer__container input[type=radio]:checked ~ label {
+  border: 0.1em solid #028A3D;
+}
+
 input[type=button],
 input[type=submit],
 button {
@@ -171,7 +195,7 @@ input[type=radio] {
 }
 
 .buttonContainer {
-  margin: 10% 0;
+  margin: 5% 0 10%;
 }
 
 .nextButton {
@@ -188,18 +212,17 @@ input[type=radio] {
 /* Change content*/
 #home, #score__board, #quiz__box.show, #quiz__box {
   flex-direction: column;
-  height: 100%;
-  width: 90%;
 }
 
 #quiz__box {
   display: none;
-  height: 100%;
-  width: 90%;
 }
 
 #quiz__box.show {
-  width: 100%;
+  padding: 0 5%;
+}
+#quiz__box.show .question-title {
+  margin: 10% 0 0;
 }
 
 /* Score board */
@@ -219,17 +242,17 @@ input[type=radio] {
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 978px) {
-  .container {
+  .container, #home, #quiz__box, #quiz__box.show, #score__board {
     width: 50%;
   }
 }
 @media screen and (max-width: 977px) and (min-width: 769px) {
-  .container {
+  .container, #home, #quiz__box, #quiz__box.show, #score__board {
     width: 60%;
   }
 }
 @media screen and (max-width: 768px) {
-  .container {
+  .container, #home, #quiz__box, #quiz__box.show, #score__board {
     width: 100% !important;
     margin: 0 5% !important;
   }

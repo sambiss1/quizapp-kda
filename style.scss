@@ -96,7 +96,7 @@ form {
     margin: 5% 0 0;
 }
 
-/* Success page */
+/* Result  page */
 .backToHome {
     @extend .startButton;
     @extend .allLinks;
@@ -115,7 +115,7 @@ form {
 
 }
 
-.lnr {
+.lni {
     font-weight: 900 !important;
 }
 
@@ -136,14 +136,14 @@ form {
 .status {
     display: flex;
     justify-content: space-between;
-    margin: 5% 0;
+    margin: 1em 0 0;
 }
 
 .progressbar__container {
     width: 100%;
     background: #DDDDDD;
     border-radius: 1em;
-    margin: 5% 0;
+    margin: 1em 0;
 }
 
 .progressbar {
@@ -151,7 +151,7 @@ form {
     width: 100%;
     background: $submit__button__bg;
     border-radius: 1em;
-    transition: width .8s ease-in;
+    transition: width 1s ease-in;
     // animation: progress 100s;
 }
 
@@ -165,23 +165,55 @@ form {
     }
 }
 
+
+// Question form 
+.question-form {
+    padding: 0;
+}
+
+// Answer suggested
 .answer__container {
-    width: 100%;
-    border: .1em solid #c4c4c4;
-    padding: 3% $padding;
-    margin: 10% 0;
+    // width: 100%;
+    // border: .1em solid #c4c4c4;
+    // padding: 2% $padding;
+    // margin: 1em 0;
     display: flex;
+    position: relative;
 
     label,
     input {
-
         margin: 0 2%;
-        //border: .1em solid $submit__button__bg;
-        border-radius: 0;
 
         &:hover {
             @extend .elementHover;
         }
+    }
+
+    label {
+        width: 100%;
+        border: .1em solid #c4c4c4;
+        padding: 2% 10%;
+        margin: 1em 0;
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        align-self: center;
+        justify-self: center;
+        appearance: none;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        border: .1em solid #C4C4C4;
+    }
+
+    input[type="radio"]:checked {
+        background-color: $submit__button__bg;
+        border: .1em solid $submit__button__bg;
+    }
+
+    input[type="radio"]:checked~label {
+        border: .1em solid $submit__button__bg;
     }
 }
 
@@ -206,7 +238,7 @@ input[type="radio"] {
 
 .buttonContainer {
     @extend .status;
-    margin: 10% 0;
+    margin: 5% 0 10%;
 }
 
 .nextButton {
@@ -237,25 +269,30 @@ input[type="radio"] {
 /* Change content*/
 #home {
     @extend .centereditems;
+    @extend .container;
     flex-direction: column;
-    height: 100%;
-    width: 90%;
+    // height: 100%;
+    // width: 90%;
 }
 
 #quiz__box {
     @extend #home;
     display: none;
-    height: 100%;
-    width: 90%;
+    // height: 90%;
     // opacity: 0;
 }
 
 #quiz__box.show {
     @extend #home;
-    width: 100%;
+    padding: 0 5%;
+
+    // width: 100%;
     // animation: fadeOut .3s;
     // opacity: 1;
     // transition: all .3s ease;
+    .question-title {
+        margin: 10% 0 0;
+    }
 }
 
 /* Score board */
