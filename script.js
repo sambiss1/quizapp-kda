@@ -247,7 +247,7 @@ const showQuestionsFunction = (indexQuestion) => {
     //     return questions;
     // }
 
-    shuffleQuestion();
+    // shuffleQuestion();
 
     // console.log(questions);
     // Question title
