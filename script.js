@@ -207,6 +207,9 @@ const questions = [
 // indexQuestion
 let indexQuestion = 0;
 
+// index of question 
+let index = 0;
+
 // User score
 let userScore = 0;
 
@@ -230,6 +233,23 @@ const showQuestionsFunction = (indexQuestion) => {
     // Question form
     const questionForm = document.querySelector(".question-form")
 
+    // questions.sort(() =>
+    //     Math.random() - 0.5);
+    // for (let indexQuestion = 0; indexQuestion < questions.length; indexQuestion++) {
+    //     questions[indexQuestion].answerSuggested.sort(() => Math.random() - 0.5);
+    // }
+
+    // const shuffleQuestion = () => {
+    //     for (let i = questions.length - 1; i > 0; i--) {
+    //         const j = Math.floor(Math.random() * (i + 1));
+    //         [questions[i], questions[j]] = [questions[j], questions[i]];
+    //     }
+    //     return questions;
+    // }
+
+    shuffleQuestion();
+
+    // console.log(questions);
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
     questionTitle.innerHTML = questionText;
