@@ -203,6 +203,21 @@ const questions = [
         ]
     },
 ];
+const shuffleQuestion = () => {
+    questions.sort(() => Math.random() - 0.5);
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].answerSuggested.sort(() => Math.random() - 0.5);
+    }
+}
+
+// const shuffleQuestion = () => {
+//     for (let i = questions.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [questions[i], questions[j]] = [questions[j], questions[i]];
+//         questions[i].answerSuggested.sort(() => Math.random() - 0.5)
+//     }
+
+// }
 
 // indexQuestion
 let indexQuestion = 0;
@@ -228,14 +243,21 @@ const showQuestionsFunction = (indexQuestion) => {
     const questionStatusContainer = document.querySelector(".questionstatus__container")
 
     // Question form
-    const questionForm = document.querySelector(".question-form")
+    const questionForm = document.querySelector(".question-form");
+
+
+
+
+
+    shuffleQuestion();
+
 
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
     questionTitle.innerHTML = questionText;
     // Question status
     let status = `<div class="status">` +
-        `<p class="question__number">Question  ${questions[indexQuestion].id}/15 </p>` +
+        `<p class="question__number">Question  ${indexQuestion + 1}/15 </p>` +
         `<div class="timercounter">` + `</div>` +
         `</div>`;
     // Question progress
@@ -245,21 +267,21 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Anwers suggested
     const answerContainer = `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" id="firstAnswerSuggested" name="answer" value="${questions[indexQuestion].answerSuggested[3]}">` +
         `<label for="firstAnswerSuggested"> ${questions[indexQuestion].answerSuggested[3]} </label>` +
         `</div>` +
         `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" name="answer" id="secondAnswerSuggested" value="${questions[indexQuestion].answerSuggested[1]}">` +
         `<label for="secondAnswerSuggested"> ${questions[indexQuestion].answerSuggested[1]} </label>` +
         `</div>` +
         `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" name="answer" id="thirdAnswerSuggested" value="${questions[indexQuestion].answerSuggested[2]}" >` +
         `<label for="thirdAnswerSuggested">  ${questions[indexQuestion].answerSuggested[2]}</label>` +
         `</div>` + `<div class="answer__container">` +
-        
+
         `<input type="radio" class="answer" name="answer" id="fourthAnswerSuggested" value="${questions[indexQuestion].answerSuggested[0]}">` +
         `<label for="fourthAnswerSuggested">${questions[indexQuestion].answerSuggested[0]}</label>` +
         `</div>`;
