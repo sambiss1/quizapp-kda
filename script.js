@@ -203,6 +203,8 @@ const questions = [
         ]
     },
 ];
+
+// Shuffle questions before showing
 const shuffleQuestion = () => {
     questions.sort(() => Math.random() - 0.5);
     for (let i = 0; i < questions.length; i++) {
@@ -210,20 +212,8 @@ const shuffleQuestion = () => {
     }
 }
 
-// const shuffleQuestion = () => {
-//     for (let i = questions.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [questions[i], questions[j]] = [questions[j], questions[i]];
-//         questions[i].answerSuggested.sort(() => Math.random() - 0.5)
-//     }
-
-// }
-
 // indexQuestion
 let indexQuestion = 0;
-
-// index of question 
-let index = 0;
 
 // User score
 let userScore = 0;
@@ -248,28 +238,8 @@ const showQuestionsFunction = (indexQuestion) => {
     // Question form
     const questionForm = document.querySelector(".question-form");
 
-
-
-
-
+    // Calling shuffle questions fucntion
     shuffleQuestion();
-
-
-    // questions.sort(() =>
-    //     Math.random() - 0.5);
-    // for (let indexQuestion = 0; indexQuestion < questions.length; indexQuestion++) {
-    //     questions[indexQuestion].answerSuggested.sort(() => Math.random() - 0.5);
-    // }
-
-    // const shuffleQuestion = () => {
-    //     for (let i = questions.length - 1; i > 0; i--) {
-    //         const j = Math.floor(Math.random() * (i + 1));
-    //         [questions[i], questions[j]] = [questions[j], questions[i]];
-    //     }
-    //     return questions;
-    // }
-
-    // shuffleQuestion();
 
     // console.log(questions);
     // Question title
@@ -380,8 +350,8 @@ const showQuestionsFunction = (indexQuestion) => {
 
             // Hide quiz box
             quizBox.classList.remove("show");
-        }
-    }
+        };
+    };
 
     // Get user Score 
     const getUserScore = () => {
@@ -399,15 +369,14 @@ const showQuestionsFunction = (indexQuestion) => {
             // Else 
             // User score dont change
             userScore = userScore;
-        }
-    }
+        };
+    };
 
     // Next questions button 
     nextQuestionButton.addEventListener("click", showNextQuestion = (event) => {
         // Call next question function
         nextQuestion();
     });
-
 
     // Progress bar 
     const progressBar = document.querySelector(".progressbar");
@@ -529,9 +498,9 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
                     usermail.style.border = ".1em solid red";
                     mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
                 }
-            }
-        }
-    }
+            };
+        };
+    };
     else {
         // Store user data
         localStorage.setItem("user-name", usernameValue);
