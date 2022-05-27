@@ -224,7 +224,6 @@ let isChecked = false;
 // Answer selected value 
 let answerSelected = "";
 
-
 // Function for showing questions 
 const showQuestionsFunction = (indexQuestion) => {
 
@@ -238,10 +237,9 @@ const showQuestionsFunction = (indexQuestion) => {
     // Question form
     const questionForm = document.querySelector(".question-form");
 
-    // Calling shuffle questions fucntion
+    // Calling shuffle questions function
     shuffleQuestion();
 
-    // console.log(questions);
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
     questionTitle.innerHTML = questionText;
@@ -378,6 +376,38 @@ const showQuestionsFunction = (indexQuestion) => {
         nextQuestion();
     });
 
+
+    // Timer
+    const timeCounter = document.querySelector(".timercounter");
+    // Declare timer value to 0
+    let countTime = 0;
+    // Function for starting timer
+    const startTime = (time) => {
+        const timer = () => {
+
+            // Decremente time
+            time--;
+
+            // Show timer on page
+            timeCounter.textContent = time;
+
+
+            // If time is less than 9 we add zero to number(integer)
+            if (time < 9) {
+                let addZero = timeCounter.textContent;
+                timeCounter.textContent = "0" + addZero;
+            }
+            // If time is less than 0 we stop timer, and call next question function
+            if (time <= 0) {
+
+                clearInterval(countTime);
+                nextQuestion();
+            };
+        };
+        // Timer interval
+        countTime = setInterval(timer, 1000);
+    };
+
     // Progress bar 
     const progressBar = document.querySelector(".progressbar");
     let progressLine = 0;
@@ -394,50 +424,12 @@ const showQuestionsFunction = (indexQuestion) => {
             if (widthBar < 1) {
                 clearInterval(progressLine);
             };
-
         };
-        progressLine = setInterval(widthTimerBar, 1000);
+        progressLine = setInterval(widthTimerBar, 100);
     };
-
-    // Timer
-    const timeCounter = document.querySelector(".timercounter");
-    // Declare timer value to 0
-    let countTime = 0;
-    // Function for starting timer
-    const startTime = (time) => {
-        const timer = () => {
-            // Show timer on page
-            timeCounter.textContent = time;
-
-            // Decremente time
-            time--;
-
-            // Change progressbar color
-            if (time < 30) {
-                progressBar.style.background = "#FF8C00 !important";
-            };
-            if (time <= 15) {
-                progressBar.style.background = "#FF0000 !important";
-            };
-
-            // If time is less than 9 we add zero to number(integer)
-            if (time < 9) {
-                let addZero = timeCounter.textContent;
-                timeCounter.textContent = "0" + addZero;
-            }
-            // If time is less than 0 we stop timer, and call next question function
-            if (time <= 0) {
-                clearInterval(countTime);
-                nextQuestion();
-            };
-        };
-        // Timer interval
-        countTime = setInterval(timer, 1000);
-    };
-
 
     // start timer and progress bar decrement
-    startTime(59);
+    startTime(60);
     startProgress(100);
     checkAnswer();
 
@@ -500,7 +492,7 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
                 }
             };
         };
-    };
+    }
     else {
         // Store user data
         localStorage.setItem("user-name", usernameValue);
