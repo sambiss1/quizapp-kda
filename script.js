@@ -222,6 +222,9 @@ const shuffleQuestion = () => {
 // indexQuestion
 let indexQuestion = 0;
 
+// index of question 
+let index = 0;
+
 // User score
 let userScore = 0;
 
@@ -252,6 +255,23 @@ const showQuestionsFunction = (indexQuestion) => {
     shuffleQuestion();
 
 
+    // questions.sort(() =>
+    //     Math.random() - 0.5);
+    // for (let indexQuestion = 0; indexQuestion < questions.length; indexQuestion++) {
+    //     questions[indexQuestion].answerSuggested.sort(() => Math.random() - 0.5);
+    // }
+
+    // const shuffleQuestion = () => {
+    //     for (let i = questions.length - 1; i > 0; i--) {
+    //         const j = Math.floor(Math.random() * (i + 1));
+    //         [questions[i], questions[j]] = [questions[j], questions[i]];
+    //     }
+    //     return questions;
+    // }
+
+    // shuffleQuestion();
+
+    // console.log(questions);
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
     questionTitle.innerHTML = questionText;
@@ -312,17 +332,13 @@ const showQuestionsFunction = (indexQuestion) => {
     const checkAnswer = () => {
         for (const answer of userAnswers) {
             answer.addEventListener("click", changeAnswer = (isChecked) => {
-                // Change isChecked value 
-                isChecked = true;
-                if (isChecked != false) {
-                    // Enable nextButton
-                    nextQuestionButton.disabled = false;
 
-                    // Store answer value in ohter variable 
-                    answerSelected = answer.value;
-                } else {
-                    answerSelected = "";
-                };
+                // Enable nextButton
+                nextQuestionButton.disabled = false;
+
+                // Store answer value in ohter variable 
+                answerSelected = answer.value;
+
             });
         };
     };
@@ -392,6 +408,28 @@ const showQuestionsFunction = (indexQuestion) => {
         nextQuestion();
     });
 
+
+    // Progress bar 
+    const progressBar = document.querySelector(".progressbar");
+    let progressLine = 0;
+    // Function for starting progress bar
+    const startProgress = (widthBar) => {
+        // Time for decrementation progress bar
+        const widthTimerBar = () => {
+            // Decremente progressbar
+            widthBar -= 1.66666665;
+            // Here decremantation is on progress bar width
+            progressBar.style.width = widthBar + "%";
+
+            // If progressbar widthBar is less than 1, we stop 
+            if (widthBar < 1) {
+                clearInterval(progressLine);
+            };
+
+        };
+        progressLine = setInterval(widthTimerBar, 1000);
+    };
+
     // Timer
     const timeCounter = document.querySelector(".timercounter");
     // Declare timer value to 0
@@ -404,6 +442,14 @@ const showQuestionsFunction = (indexQuestion) => {
 
             // Decremente time
             time--;
+
+            // Change progressbar color
+            if (time < 30) {
+                progressBar.style.background = "#FF8C00 !important";
+            };
+            if (time <= 15) {
+                progressBar.style.background = "#FF0000 !important";
+            };
 
             // If time is less than 9 we add zero to number(integer)
             if (time < 9) {
@@ -420,25 +466,6 @@ const showQuestionsFunction = (indexQuestion) => {
         countTime = setInterval(timer, 1000);
     };
 
-    // Progress bar 
-    const progressBar = document.querySelector(".progressbar");
-    let progressLine = 0;
-    // Function for starting progress bar
-    const startProgress = (widthBar) => {
-        // Time for decrementation progress bar
-        const widthTimerBar = () => {
-            // Decremente progressbar
-            widthBar -= 1.66666665;//0.833333325;
-            // Here decremantation is on progress bar width
-            progressBar.style.width = widthBar + "%";
-
-            // If progressbar widthBar is less than 1, we stop 
-            if (widthBar < 1) {
-                clearInterval(progressLine);
-            };
-        };
-        progressLine = setInterval(widthTimerBar, 1000);
-    };
 
     // start timer and progress bar decrement
     startTime(59);
@@ -518,12 +545,7 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
 
 // Back to home function 
 backToHome.addEventListener("click", homeReturn = (event) => {
-    quizBox.classList.remove("show");
-    scoreBoard.style.display = "none";
-    homeContent.style.display = "flex";
-    homePageForm.reset();
-    userScore = 0;
-    answerSelected = "";
+    window.location.reload();
 });
 
 // User score board elements
