@@ -203,6 +203,8 @@ const questions = [
         ]
     },
 ];
+
+// Shuffle questions before showing
 const shuffleQuestion = () => {
     questions.sort(() => Math.random() - 0.5);
     for (let i = 0; i < questions.length; i++) {
@@ -210,14 +212,6 @@ const shuffleQuestion = () => {
     }
 }
 
-// const shuffleQuestion = () => {
-//     for (let i = questions.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [questions[i], questions[j]] = [questions[j], questions[i]];
-//         questions[i].answerSuggested.sort(() => Math.random() - 0.5)
-//     }
-
-// }
 
 // indexQuestion
 let indexQuestion = 0;
@@ -230,7 +224,6 @@ let isChecked = false;
 
 // Answer selected value 
 let answerSelected = "";
-
 
 // Function for showing questions 
 const showQuestionsFunction = (indexQuestion) => {
@@ -245,12 +238,8 @@ const showQuestionsFunction = (indexQuestion) => {
     // Question form
     const questionForm = document.querySelector(".question-form");
 
-
-
-
-
+    // Calling shuffle questions function
     shuffleQuestion();
-
 
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
@@ -364,8 +353,8 @@ const showQuestionsFunction = (indexQuestion) => {
 
             // Hide quiz box
             quizBox.classList.remove("show");
-        }
-    }
+        };
+    };
 
     // Get user Score 
     const getUserScore = () => {
@@ -383,8 +372,8 @@ const showQuestionsFunction = (indexQuestion) => {
             // Else 
             // User score dont change
             userScore = userScore;
-        }
-    }
+        };
+    };
 
     // Next questions button 
     nextQuestionButton.addEventListener("click", showNextQuestion = (event) => {
@@ -399,12 +388,15 @@ const showQuestionsFunction = (indexQuestion) => {
     // Function for starting timer
     const startTime = (time) => {
         const timer = () => {
-            // Show timer on page
-            timeCounter.textContent = time;
 
             // Decremente time
             time--;
 
+            // Show timer on page
+            timeCounter.textContent = time;
+
+
+            console.log(time);
             // If time is less than 9 we add zero to number(integer)
             if (time < 9) {
                 let addZero = timeCounter.textContent;
@@ -412,6 +404,7 @@ const showQuestionsFunction = (indexQuestion) => {
             }
             // If time is less than 0 we stop timer, and call next question function
             if (time <= 0) {
+
                 clearInterval(countTime);
                 nextQuestion();
             };
@@ -428,7 +421,7 @@ const showQuestionsFunction = (indexQuestion) => {
         // Time for decrementation progress bar
         const widthTimerBar = () => {
             // Decremente progressbar
-            widthBar -= 1.66666665;//0.833333325;
+            widthBar -= 1.66666665;
             // Here decremantation is on progress bar width
             progressBar.style.width = widthBar + "%";
 
@@ -437,11 +430,11 @@ const showQuestionsFunction = (indexQuestion) => {
                 clearInterval(progressLine);
             };
         };
-        progressLine = setInterval(widthTimerBar, 1000);
+        progressLine = setInterval(widthTimerBar, 100);
     };
 
     // start timer and progress bar decrement
-    startTime(59);
+    startTime(60);
     startProgress(100);
     checkAnswer();
 
