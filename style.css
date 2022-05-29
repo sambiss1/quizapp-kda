@@ -17,26 +17,27 @@ body {
   padding: 5%;
 }
 
-.centereditems, #home__page, #score__page, #quiz__page.show, #quiz__page, .startbutton__container, html,
+.centereditems, #home__page, #score__page, #quiz__page.show, #quiz__page, .startbutton__container, #home, #quiz__box.show, #quiz__box, .container, html,
 body {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.allLinks, .backToHome {
+.allLinks {
   text-decoration: none;
 }
 
-.container, #home__page, #score__page, #quiz__page.show, #quiz__page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container, #home__page, #score__page, #quiz__page.show, #quiz__page, #home, #quiz__box.show, #quiz__box {
   flex-direction: column;
-  width: 40%;
+  width: 45%;
   background: #fff;
   height: auto;
   padding: 5%;
+}
+
+#home, #quiz__box.show, #quiz__box {
+  flex-direction: column;
 }
 
 h1 {
@@ -57,11 +58,11 @@ form input[type=email] {
   margin: 2% 0;
 }
 
-.startButton, .exitButton, .nextButton, .backToHome {
+.startButton, .exitButton, .nextButton {
   padding: 1em 10%;
   background: #028A3D;
   border: none;
-  color: #fff;
+  color: #FFFFFF;
   font-size: 1em;
 }
 .username__container {
@@ -76,35 +77,18 @@ form input[type=email] {
   margin: 5% 0 0;
 }
 
-/* Result  page */
-.backToHome {
-  background-color: #0880D6;
-  margin: 5% 0;
-}
-
-.username__response,
-.usermail__response {
-  margin: 5% 0;
-}
-
-.icon__container {
-  font-size: 8em;
-  margin: 5% 0;
-}
-
-.lni {
-  font-weight: 900 !important;
-}
-
-.success {
-  color: #028A3D;
-}
-
-.failed {
-  color: #FF3838;
-}
-
 /* Question page */
+#quiz__box {
+  display: none;
+}
+
+#quiz__box.show {
+  padding: 0 5%;
+}
+#quiz__box.show .question-title {
+  margin: 10% 0 0;
+}
+
 .questionstatus__container {
   width: 100%;
 }
@@ -130,14 +114,6 @@ form input[type=email] {
   transition: width 1s ease-in;
 }
 
-@keyframes progress {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0%;
-  }
-}
 .question-form {
   padding: 0;
 }
@@ -147,12 +123,12 @@ form input[type=email] {
   position: relative;
 }
 .answer__container label,
-.answer__container input {
+.answer__container input[type=radio] {
   margin: 0 2%;
 }
 .answer__container label {
   width: 100%;
-  border: 0.1em solid #c4c4c4;
+  border: 0.1em solid #C4C4C4;
   padding: 2% 10%;
   margin: 1em 0;
 }
@@ -161,8 +137,8 @@ form input[type=email] {
   align-self: center;
   justify-self: center;
   appearance: none;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.2em;
+  height: 1.2em;
   border-radius: 50%;
   border: 0.1em solid #C4C4C4;
 }
@@ -180,17 +156,9 @@ button {
   box-shadow: 0px 4px 2px 1px #C4C4C4;
 }
 
-.elementHover, .startButton:hover, .exitButton:hover, .nextButton:hover, .backToHome:hover, .answer__container label:hover,
-.answer__container input:hover {
+.elementHover, .startButton:hover, .exitButton:hover, .nextButton:hover, .answer__container label:hover,
+.answer__container input[type=radio]:hover {
   cursor: pointer;
-}
-
-input[type=radio] {
-  border: 0.1em solid #028A3D;
-}
-
-.clicked {
-  border: 0.1em solid #028A3D;
 }
 
 .buttonContainer {
@@ -200,12 +168,14 @@ input[type=radio] {
 .nextButton {
   width: 50%;
   margin: 0 0 0 5%;
+  padding: 0.8em 10%;
 }
 .nextButton:disabled {
   background: rgba(2, 138, 61, 0.42);
 }
 .exitButton {
   background: #EC880C;
+  padding: 0.8em 10%;
   width: 50%;
 }
 /* Change content*/
@@ -229,17 +199,18 @@ input[type=radio] {
   display: none;
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-  }
+.lni {
+  font-weight: 900 !important;
 }
+
+.success {
+  color: #028A3D;
+}
+
+.failed {
+  color: #FF3838;
+}
+
 @media screen and (max-width: 1024px) and (min-width: 978px) {
   #home__page, #quiz__page, #quiz__page.show, #score__page {
     width: 60%;

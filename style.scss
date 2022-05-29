@@ -3,11 +3,15 @@
 
 
 /* Create reusable variables */
-$padding: 5%;
+$main__color: #028A3D;
+$main__padding: 5%;
 $margin: 10% 0;
-$submit__button__bg: #028A3D;
-$white-color: #fff;
+// $submit__button__bg: #028A3D;
+$white-color: #FFFFFF;
 $button__font-size: 1em;
+$answer__border: .1em solid #C4C4C4;
+$rounded__border: 50%;
+$middle__width: 50%;
 
 
 * {
@@ -15,6 +19,8 @@ $button__font-size: 1em;
     padding: 0;
     box-sizing: border-box;
 }
+
+
 
 html,
 body {
@@ -24,29 +30,38 @@ body {
     background: linear-gradient(90deg, #85F6B8 0%, rgba(142, 217, 235, 0.85) 99.84%);
     background-blend-mode: darken;
     font-family: "Inter", "Sans-serif";
-    padding: $padding;
+    padding: $main__padding;
 }
 
+
+// Rules for centerlize items
 .centereditems {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+// 
 .allLinks {
     text-decoration: none;
 }
 
+// Main container 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .centereditems;
     flex-direction: column;
-    width: 40%;
+    width: 45%;
     background: #fff;
     height: auto;
     padding: 5%;
 
+}
+
+// Home page
+#home {
+    @extend .centereditems;
+    @extend .container;
+    flex-direction: column;
 }
 
 h1 {
@@ -57,22 +72,22 @@ p {
     text-align: center;
 }
 
+
+// Home page form
 form {
     width: 100%;
 
     input[type="text"],
     input[type="email"] {
         width: 100%;
-        padding: 2% $padding;
+        padding: 2% $main__padding;
         margin: 2% 0;
     }
-
-
 }
 
 .startButton {
     padding: 1em 10%;
-    background: $submit__button__bg;
+    background: $main__color;
     border: none;
     color: $white-color;
     font-size: $button__font-size;
@@ -82,52 +97,39 @@ form {
     }
 }
 
+// User name
 .username__container {
     margin: $margin;
 }
 
+// User mail
 .usermail__container {
     margin: $margin 0 0;
 }
 
+// Start button
 .startbutton__container {
     @extend .centereditems;
     margin: 5% 0 0;
 }
 
-/* Result  page */
-.backToHome {
-    @extend .startButton;
-    @extend .allLinks;
-    background-color: #0880D6;
-    margin: 5% 0;
-}
-
-.username__response,
-.usermail__response {
-    margin: 5% 0;
-}
-
-.icon__container {
-    font-size: 8em;
-    margin: 5% 0;
-
-}
-
-.lni {
-    font-weight: 900 !important;
-}
-
-.success {
-    color: #028A3D;
-
-}
-
-.failed {
-    color: #FF3838;
-}
-
 /* Question page */
+#quiz__box {
+    @extend #home;
+    display: none;
+}
+
+#quiz__box.show {
+    @extend #home;
+    padding: 0 5%;
+
+    .question-title {
+        margin: 10% 0 0;
+    }
+}
+
+
+// QUestion status
 .questionstatus__container {
     width: 100%;
 }
@@ -148,22 +150,11 @@ form {
 .progressbar {
     height: .6em;
     width: 100%;
-    background: $submit__button__bg;
+    background: $main__color;
     border-radius: 1em;
     transition: width 1s ease-in;
     // animation: progress 120s;
 }
-
-@keyframes progress {
-    from {
-        width: 100%;
-    }
-
-    to {
-        width: 0%;
-    }
-}
-
 
 // Question form 
 .question-form {
@@ -172,15 +163,11 @@ form {
 
 // Answer suggested
 .answer__container {
-    // width: 100%;
-    // border: .1em solid #c4c4c4;
-    // padding: 2% $padding;
-    // margin: 1em 0;
     display: flex;
     position: relative;
 
     label,
-    input {
+    input[type="radio"] {
         margin: 0 2%;
 
         &:hover {
@@ -190,7 +177,7 @@ form {
 
     label {
         width: 100%;
-        border: .1em solid #c4c4c4;
+        border: $answer__border;
         padding: 2% 10%;
         margin: 1em 0;
     }
@@ -200,26 +187,27 @@ form {
         align-self: center;
         justify-self: center;
         appearance: none;
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 50%;
-        border: .1em solid #C4C4C4;
+        width: 1.2em;
+        height: 1.2em;
+        border-radius: $rounded__border;
+        border: $answer__border;
     }
 
     input[type="radio"]:checked {
-        background-color: $submit__button__bg;
-        border: .1em solid $submit__button__bg;
+        background-color: $main__color;
+        border: .1em solid $main__color;
     }
 
     input[type="radio"]:checked~label {
-        border: .1em solid $submit__button__bg;
+        border: .1em solid $main__color;
     }
 }
 
+
+// Button box-shadow;
 input[type="button"],
 input[type="submit"],
 button {
-
     box-shadow: 0px 4px 2px 1px #C4C4C4;
 }
 
@@ -227,23 +215,18 @@ button {
     cursor: pointer;
 }
 
-input[type="radio"] {
-    border: .1em solid $submit__button__bg;
-}
-
-.clicked {
-    border: .1em solid $submit__button__bg;
-}
 
 .buttonContainer {
     @extend .status;
     margin: 5% 0 10%;
 }
 
+// Next question button
 .nextButton {
     @extend .startButton;
-    width: 50%;
+    width: $middle__width;
     margin: 0 0 0 5%;
+    padding: .8em 10%;
 
     &:disabled {
         background: rgba(2, 138, 61, 0.42);
@@ -258,7 +241,8 @@ input[type="radio"] {
 .exitButton {
     @extend .startButton;
     background: #EC880C;
-    width: 50%;
+    padding: .8em 10%;
+    width: $middle__width;
 
     &:hover {
         @extend .elementHover;
@@ -292,20 +276,19 @@ input[type="radio"] {
     display: none;
 }
 
-// Animation 
-@keyframes fadeOut {
-    from {
-        opacity: 0;
-    }
-
-    50% {
-        opacity: .5;
-    }
-
-    to {
-        opacity: 1;
-    }
+.lni {
+    font-weight: 900 !important;
 }
+
+.success {
+    color: #028A3D;
+
+}
+
+.failed {
+    color: #FF3838;
+}
+
 
 @media screen and (max-width: 1024px) and (min-width:978px) {
     #home__page {

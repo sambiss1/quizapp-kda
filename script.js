@@ -211,6 +211,9 @@ for (let i = 0; i < questions.length; i++) {
 // indexQuestion
 let indexQuestion = 0;
 
+// index of question 
+let index = 0;
+
 // User score
 let userScore = 0;
 
@@ -293,17 +296,13 @@ const showQuestionsFunction = (indexQuestion) => {
     const checkAnswer = () => {
         for (const answer of userAnswers) {
             answer.addEventListener("click", changeAnswer = (isChecked) => {
-                // Change isChecked value 
-                isChecked = true;
-                if (isChecked != false) {
-                    // Enable nextButton
-                    nextQuestionButton.disabled = false;
 
-                    // Store answer value in ohter variable 
-                    answerSelected = answer.value;
-                } else {
-                    answerSelected = "";
-                };
+                // Enable nextButton
+                nextQuestionButton.disabled = false;
+
+                // Store answer value in ohter variable 
+                answerSelected = answer.value;
+
             });
         };
     };
@@ -372,6 +371,9 @@ const showQuestionsFunction = (indexQuestion) => {
         // Call next question function
         nextQuestion();
     });
+
+
+    
 
     // Timer
     const timeCounter = document.querySelector(".timercounter");
