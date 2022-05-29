@@ -65,7 +65,6 @@ body {
 }
 
 h1 {
-    justify-self: flex-start;
     margin: 0 0 $margin;
 }
 
@@ -154,8 +153,7 @@ form {
     background: $main__color;
     border-radius: 1em;
     transition: width 1s ease-in;
-    // background-color .3s ease;
-    // animation: progress 100s;
+    // animation: progress 120s;
 }
 
 // Question form 
@@ -251,29 +249,31 @@ button {
     }
 }
 
+/* Change content*/
+#home__page {
+    @extend .centereditems;
+    @extend .container;
+    flex-direction: column;
+}
 
-/* Result  page */
-#score__board {
-    @extend #home;
+#quiz__page {
+    @extend #home__page;
     display: none;
 }
 
-.backToHome {
-    @extend .startButton;
-    @extend .allLinks;
-    background-color: #0880D6;
-    margin: 5% 0;
+#quiz__page.show {
+    @extend #home__page;
+    padding: 0 5%;
+
+    .question-title {
+        margin: 10% 0 0;
+    }
 }
 
-.username__response,
-.usermail__response {
-    margin: 5% 0;
-}
-
-.icon__container {
-    font-size: 8em;
-    margin: 5% 0;
-
+/* Score board */
+#score__page {
+    @extend #home__page;
+    display: none;
 }
 
 .lni {
@@ -291,20 +291,41 @@ button {
 
 
 @media screen and (max-width: 1024px) and (min-width:978px) {
-    .container {
-        width: 50%;
+    #home__page {
+        width: 60%;
     }
+
+
 }
 
 @media screen and (max-width: 977px) and (min-width: 769px) {
-    .container {
-        width: 60%;
+    #home__page {
+        width: 80%;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .container {
+    #home__page {
         width: 100% !important;
-        margin: 0 5% !important;
+        margin: 0;
     }
+
+    h1 {
+        font-size: 1.4em;
+    }
+
+    p {
+        font-size: .8em;
+    }
+
+    input[type="radio"] {
+        width: 1em !important;
+        height: 1em !important;
+    }
+
+    label {
+        font-size: .8em;
+    }
+
+
 }

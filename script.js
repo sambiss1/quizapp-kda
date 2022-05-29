@@ -1,18 +1,16 @@
 /*
     This file contains all functions for Quiz Application
-
-
 */
 // User name and user mail
 const username = document.querySelector("#username");
 const usermail = document.querySelector("#usermail");
-const homeContent = document.querySelector("#home");
+const homeContent = document.querySelector("#home__page");
 
 // Question box
-const quizBox = document.querySelector("#quiz__box");
+const quizPage = document.querySelector("#quiz__page");
 
 // Score board 
-const scoreBoard = document.querySelector("#score__board");
+const scorePage = document.querySelector("#score__page");
 
 // Main form 
 const homePageForm = document.querySelector("form")
@@ -25,31 +23,31 @@ const questions = [
     // Question 1
     {
         id: 1,
-        question: "Which of the following is an advantage of using JavaScript?",
-        correctAnswer: "All of the above",
+        question: "Lequel des éléments suivants est un avantage de l'utilisation de JavaScript ?",
+        correctAnswer: "Toutes ces réponses",
         answerSuggested: [
-            "Immediate feedback to the visitors",
-            "Increased interactivity",
-            "All of the above",
-            "Less server interaction"
+            "Retour immédiat aux visiteurs",
+            "Augmentation de l'interactivité",
+            "Toutes ces réponses",
+            "Moins d'interaction avec le serveur"
         ]
     },
     // Question 2
     {
         id: 2,
-        question: "How can you get the total number of arguments passed to a function ?",
-        correctAnswer: "Using arguments.length property",
+        question: "Comment obtenir le nombre total d'arguments passés à une fonction ?",
+        correctAnswer: "Utilisation de la propriété arguments.length",
         answerSuggested: [
-            "None of the above.",
-            "Using arguments.length property",
-            "Using args.length property",
-            "Both of the above"
+            "Aucune des réponses ci-dessus.",
+            "Utilisation de la propriété arguments.length",
+            "Utilisation de la propriété args.length",
+            "Les deux ci-dessus"
         ]
     },
     // Question 3
     {
         id: 3,
-        question: "Which of the following function of String object creates an HTML hypertext link that requests another URL ?",
+        question: "Laquelle des fonctions suivantes de l'objet String crée un lien hypertexte HTML qui demande une autre URL ?",
         correctAnswer: "link()",
         answerSuggested: [
             "link()",
@@ -61,7 +59,7 @@ const questions = [
     // Question 4
     {
         id: 4,
-        question: "Which of the following function of Array object applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value?",
+        question: "Laquelle des fonctions suivantes de l'objet Array applique une fonction simultanément à deux valeurs du tableau (de gauche à droite) afin de le réduire à une seule valeur ?",
         correctAnswer: "reduce()",
         answerSuggested: [
             "reduceRight()",
@@ -73,7 +71,7 @@ const questions = [
     // Question 5
     {
         id: 5,
-        question: "Which of the following function of Array object extracts a section of an array and returns a new array?",
+        question: "Laquelle des fonctions suivantes de l'objet Array extrait une section d'un tableau et renvoie un nouveau tableau ?",
         correctAnswer: "slice()",
         answerSuggested: [
             "slice()",
@@ -85,31 +83,31 @@ const questions = [
     // Question 6
     {
         id: 6,
-        question: "Which built-in method reverses the order of the elements of an array?",
+        question: "Quelle méthode intégrée inverse l'ordre des éléments d'un tableau ?",
         correctAnswer: "reverse()",
         answerSuggested: [
             "changeOrder(order)",
             "sort(order)",
             "reverse()",
-            "None of the above"
+            "Aucune de ces réponses"
         ]
     },
     //QUestion 7
     {
         id: 7,
-        question: "Which built-in method calls a function for each element in the array?",
+        question: "Quelle méthode intégrée appelle une fonction pour chaque élément du tableau ?",
         correctAnswer: "forEach()",
         answerSuggested: [
             "loop()",
             "forEach()",
             "while()",
-            "None of the above"
+            "Aucune de ces réponses"
         ]
     },
     // Question 8
     {
         id: 8,
-        question: "Which of the following function of String object splits a String object into an array of strings by separating the string into substrings?",
+        question: "Laquelle des fonctions suivantes de l'objet String divise un objet String en un tableau de chaînes de caractères en séparant la chaîne de caractères en sous-chaînes ?",
         correctAnswer: "split()",
         answerSuggested: [
             "split()",
@@ -121,7 +119,7 @@ const questions = [
     // Question 9
     {
         id: 9,
-        question: "Which of the following function of Number object defines how many total digits to display of a number?",
+        question: "Laquelle des fonctions suivantes de l'objet Number définit le nombre total de chiffres à afficher d'un nombre ?",
         correctAnswer: "toPrecision()",
         answerSuggested: [
             "toExponential()",
@@ -133,7 +131,7 @@ const questions = [
     // Question 10
     {
         id: 10,
-        question: "Which of the following function of String object returns the calling string value converted to upper case?",
+        question: "Laquelle des fonctions suivantes de l'objet String renvoie la valeur de la chaîne de caractères appelante convertie en majuscules ?",
         correctAnswer: "toUpperCase()",
         answerSuggested: [
             "toLocaleUpperCase()",
@@ -145,7 +143,7 @@ const questions = [
     // Question 11
     {
         id: 11,
-        question: "Which built-in method adds one or more elements to the end of an array and returns the new length of the array?",
+        question: "Quelle méthode intégrée ajoute un ou plusieurs éléments à la fin d'un tableau et renvoie la nouvelle longueur du tableau ?",
         correctAnswer: "push()",
         answerSuggested: [
             "last()",
@@ -157,7 +155,7 @@ const questions = [
     // Question 12
     {
         id: 12,
-        question: "Which of the following function of Array object returns a new array comprised of this array joined with other array(s) and/or value(s)?",
+        question: "Laquelle des fonctions suivantes de l'objet Array renvoie un nouveau tableau composé de ce tableau joint à d'autres tableaux et/ou valeurs ?",
         correctAnswer: "concat()",
         answerSuggested: [
             "some()",
@@ -169,7 +167,7 @@ const questions = [
     // Question 13
     {
         id: 13,
-        question: "Which of the following function of Array object joins all elements of an array into a string?",
+        question: "Laquelle des fonctions suivantes de l'objet Array joint tous les éléments d'un tableau en une chaîne de caractères ?",
         correctAnswer: "join()",
         answerSuggested: [
             "concat()",
@@ -181,35 +179,33 @@ const questions = [
     // Question 14
     {
         id: 14,
-        question: "Which of the following is the correct syntax to redirect a url using JavaScript?",
-        correctAnswer: "window.location='http://www.newlocation.com'",
+        question: "Quelle méthode est utilisée pour accèder au contenu de l'élément d'un Object en JavaScript",
+        correctAnswer: "Object.element",
         answerSuggested: [
-            "document.location='http://www.newlocation.com'",
-            "navigator.location='http://www.newlocation.com'",
-            "browser.location='http://www.newlocation.com'",
-            "window.location='http://www.newlocation.com'"
+            "Object.element",
+            "Object{element}",
+            "Object(element)",
+            "Object[element]"
         ]
     },
     // Question 15
     {
         id: 15,
-        question: "Which of the following is correct about features of JavaScript?",
-        correctAnswer: "All of the above",
+        question: "Lequel des énoncés suivants est correct concernant les caractéristiques de JavaScript ?",
+        correctAnswer: "Toutes ces réponses",
         answerSuggested: [
-            "JavaScript is a lightweight, interpreted programming language",
-            "JavaScript is designed for creating network-centric applications",
-            "All of the above",
-            "JavaScript is complementary to and integrated with Java"
+            "JavaScript est un langage de programmation interprété et léger",
+            "JavaScript est conçu pour créer des applications centrées sur le réseau",
+            "Toutes ces réponses",
+            "JavaScript est complémentaire et intégré à Java"
         ]
     },
 ];
 
 // Shuffle questions before showing
-const shuffleQuestion = () => {
-    questions.sort(() => Math.random() - 0.5);
-    for (let i = 0; i < questions.length; i++) {
-        questions[i].answerSuggested.sort(() => Math.random() - 0.5);
-    }
+questions.sort(() => Math.random() - 0.5);
+for (let i = 0; i < questions.length; i++) {
+    questions[i].answerSuggested.sort(() => Math.random() - 0.5);
 }
 
 // indexQuestion
@@ -236,9 +232,6 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Question form
     const questionForm = document.querySelector(".question-form");
-
-    // Calling shuffle questions function
-    shuffleQuestion();
 
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
@@ -278,7 +271,7 @@ const showQuestionsFunction = (indexQuestion) => {
     let quizButtonsContainer = `<div class="buttonContainer">` +
         `<input type="button" value="Quitter" class="exitButton">` +
         `<input type="button" value="Suivant" class="nextButton" disabled>` +
-        `</div>`
+        `</div>`;
 
     // Show question, answer suggested and button
     // Add all of that in the DOM
@@ -343,11 +336,11 @@ const showQuestionsFunction = (indexQuestion) => {
             getUserScore();
 
             // Display (show) user final score(Score board)
-            scoreBoard.style.display = "flex";
-            showUserScoreBoard();
+            scorePage.style.display = "flex";
+            showUserscorePage();
 
             // Hide quiz box
-            quizBox.classList.remove("show");
+            quizPage.classList.remove("show");
         };
     };
 
@@ -377,6 +370,8 @@ const showQuestionsFunction = (indexQuestion) => {
     });
 
 
+    
+
     // Timer
     const timeCounter = document.querySelector(".timercounter");
     // Declare timer value to 0
@@ -384,13 +379,11 @@ const showQuestionsFunction = (indexQuestion) => {
     // Function for starting timer
     const startTime = (time) => {
         const timer = () => {
-
             // Decremente time
             time--;
 
             // Show timer on page
             timeCounter.textContent = time;
-
 
             // If time is less than 9 we add zero to number(integer)
             if (time < 9) {
@@ -398,7 +391,7 @@ const showQuestionsFunction = (indexQuestion) => {
                 timeCounter.textContent = "0" + addZero;
             }
             // If time is less than 0 we stop timer, and call next question function
-            if (time <= 0) {
+            if (time < 0) {
 
                 clearInterval(countTime);
                 nextQuestion();
@@ -425,7 +418,7 @@ const showQuestionsFunction = (indexQuestion) => {
                 clearInterval(progressLine);
             };
         };
-        progressLine = setInterval(widthTimerBar, 100);
+        progressLine = setInterval(widthTimerBar, 1000);
     };
 
     // start timer and progress bar decrement
@@ -446,11 +439,11 @@ const showQuestionsFunction = (indexQuestion) => {
         getUserScore();
 
         // Show user score board
-        scoreBoard.style.display = "flex";
-        showUserScoreBoard();
+        scorePage.style.display = "flex";
+        showUserscorePage();
 
         // Hide quiz box
-        quizBox.classList.remove("show");
+        quizPage.classList.remove("show");
     };
 
     // On exiting quiz
@@ -468,7 +461,7 @@ mailErrorMessage.textContent = "";
 username.after(nameErrorMessage);
 usermail.after(mailErrorMessage);
 
-// Home page form
+// home page form
 homePageForm.addEventListener("submit", storeUserData = (event) => {
     event.preventDefault();
     // Assign user data to variables 
@@ -478,34 +471,32 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
     nameErrorMessage.style.color = "red";
     mailErrorMessage.style.color = "red";
     // Validator
-    if (username.value == "") {
+    const validUserName = new RegExp(/(?=.*[a-zA-Z.]{3,})/);
+    const validUserMail = new RegExp(/(?=.*@)/)
+
+    const correctUserName = username.value.match(validUserName);
+    const correctUserMail = usermail.value.match(validUserMail);
+    if (correctUserName == null) {
         username.style.border = ".1em solid red";
         nameErrorMessage.textContent = "N’oubliez pas de renseigner votre nom avant de commencer le Quiz.";
-
-        if (usermail.value == "") {
-            usermail.style.border = ".1em solid red";
-            mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
-            for (let i = 0; i < usermailValue.length; i++) {
-                if (usermailValue[i] != "@") {
-                    usermail.style.border = ".1em solid red";
-                    mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
-                }
-            };
-        };
+        console.log(correctUserName);
+    } if (correctUserMail == null) {
+        usermail.style.border = ".1em solid red";
+        mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
     }
     else {
         // Store user data
         localStorage.setItem("user-name", usernameValue);
         localStorage.setItem("user-mail", usermailValue);
         homeContent.style.display = "none";
-        quizBox.classList.add("show");
+        quizPage.classList.add("show");
         homePageForm.reset();
         showQuestionsFunction(0);
     };
 });
 
 // Back to home function 
-backToHome.addEventListener("click", homeReturn = (event) => {
+backToHome.addEventListener("click", homeReturn = () => {
     window.location.reload();
 });
 
@@ -517,7 +508,7 @@ const icon__container = document.querySelector(".icon__container");
 const lasIcon = document.querySelector(".lni");
 
 // Function for get and show user final score
-const showUserScoreBoard = (event) => {
+const showUserscorePage = (event) => {
     // Get user name and user mail
     const userName = localStorage.getItem("user-name");
     const userMail = localStorage.getItem("user-mail");

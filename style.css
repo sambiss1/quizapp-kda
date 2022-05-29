@@ -17,18 +17,18 @@ body {
   padding: 5%;
 }
 
-.centereditems, .startbutton__container, #home, #score__board, #quiz__box.show, #quiz__box, .container, html,
+.centereditems, #home__page, #score__page, #quiz__page.show, #quiz__page, .startbutton__container, #home, #quiz__box.show, #quiz__box, .container, html,
 body {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.allLinks, .backToHome {
+.allLinks {
   text-decoration: none;
 }
 
-.container, #home, #score__board, #quiz__box.show, #quiz__box {
+.container, #home__page, #score__page, #quiz__page.show, #quiz__page, #home, #quiz__box.show, #quiz__box {
   flex-direction: column;
   width: 45%;
   background: #fff;
@@ -36,12 +36,11 @@ body {
   padding: 5%;
 }
 
-#home, #score__board, #quiz__box.show, #quiz__box {
+#home, #quiz__box.show, #quiz__box {
   flex-direction: column;
 }
 
 h1 {
-  justify-self: flex-start;
   margin: 0 0 10% 0;
 }
 
@@ -59,7 +58,7 @@ form input[type=email] {
   margin: 2% 0;
 }
 
-.startButton, .backToHome, .exitButton, .nextButton {
+.startButton, .exitButton, .nextButton {
   padding: 1em 10%;
   background: #028A3D;
   border: none;
@@ -157,7 +156,7 @@ button {
   box-shadow: 0px 4px 2px 1px #C4C4C4;
 }
 
-.elementHover, .startButton:hover, .backToHome:hover, .exitButton:hover, .nextButton:hover, .answer__container label:hover,
+.elementHover, .startButton:hover, .exitButton:hover, .nextButton:hover, .answer__container label:hover,
 .answer__container input[type=radio]:hover {
   cursor: pointer;
 }
@@ -179,24 +178,25 @@ button {
   padding: 0.8em 10%;
   width: 50%;
 }
-/* Result  page */
-#score__board {
+/* Change content*/
+#home__page, #score__page, #quiz__page.show, #quiz__page {
+  flex-direction: column;
+}
+
+#quiz__page {
   display: none;
 }
 
-.backToHome {
-  background-color: #0880D6;
-  margin: 5% 0;
+#quiz__page.show {
+  padding: 0 5%;
+}
+#quiz__page.show .question-title {
+  margin: 10% 0 0;
 }
 
-.username__response,
-.usermail__response {
-  margin: 5% 0;
-}
-
-.icon__container {
-  font-size: 8em;
-  margin: 5% 0;
+/* Score board */
+#score__page {
+  display: none;
 }
 
 .lni {
@@ -212,19 +212,36 @@ button {
 }
 
 @media screen and (max-width: 1024px) and (min-width: 978px) {
-  .container, #home, #quiz__box, #quiz__box.show, #score__board {
-    width: 50%;
-  }
-}
-@media screen and (max-width: 977px) and (min-width: 769px) {
-  .container, #home, #quiz__box, #quiz__box.show, #score__board {
+  #home__page, #quiz__page, #quiz__page.show, #score__page {
     width: 60%;
   }
 }
+@media screen and (max-width: 977px) and (min-width: 769px) {
+  #home__page, #quiz__page, #quiz__page.show, #score__page {
+    width: 80%;
+  }
+}
 @media screen and (max-width: 768px) {
-  .container, #home, #quiz__box, #quiz__box.show, #score__board {
+  #home__page, #quiz__page, #quiz__page.show, #score__page {
     width: 100% !important;
-    margin: 0 5% !important;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+
+  input[type=radio] {
+    width: 1em !important;
+    height: 1em !important;
+  }
+
+  label {
+    font-size: 0.8em;
   }
 }
 
