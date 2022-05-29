@@ -1,18 +1,16 @@
 /*
     This file contains all functions for Quiz Application
-
-
 */
 // User name and user mail
 const username = document.querySelector("#username");
 const usermail = document.querySelector("#usermail");
-const homeContent = document.querySelector("#home");
+const homeContent = document.querySelector("#home__page");
 
 // Question box
-const quizBox = document.querySelector("#quiz__box");
+const quizPage = document.querySelector("#quiz__page");
 
 // Score board 
-const scoreBoard = document.querySelector("#score__board");
+const scorePage = document.querySelector("#score__page");
 
 // Main form 
 const homePageForm = document.querySelector("form")
@@ -181,13 +179,13 @@ const questions = [
     // Question 14
     {
         id: 14,
-        question: "Which of the following is the correct syntax to redirect a url using JavaScript?",
-        correctAnswer: "window.location='http://www.newlocation.com'",
+        question: "Quelle méthode est utilisée pour accèder au contenu de l'élément d'un Object en JavaScript",
+        correctAnswer: "Object.element",
         answerSuggested: [
-            "document.location='http://www.newlocation.com'",
-            "navigator.location='http://www.newlocation.com'",
-            "browser.location='http://www.newlocation.com'",
-            "window.location='http://www.newlocation.com'"
+            "Object.element",
+            "Object{element}",
+            "Object(element)",
+            "Object[element]"
         ]
     },
     // Question 15
@@ -205,13 +203,10 @@ const questions = [
 ];
 
 // Shuffle questions before showing
-const shuffleQuestion = () => {
-    questions.sort(() => Math.random() - 0.5);
-    for (let i = 0; i < questions.length; i++) {
-        questions[i].answerSuggested.sort(() => Math.random() - 0.5);
-    }
+questions.sort(() => Math.random() - 0.5);
+for (let i = 0; i < questions.length; i++) {
+    questions[i].answerSuggested.sort(() => Math.random() - 0.5);
 }
-
 
 // indexQuestion
 let indexQuestion = 0;
@@ -237,9 +232,6 @@ const showQuestionsFunction = (indexQuestion) => {
 
     // Question form
     const questionForm = document.querySelector(".question-form");
-
-    // Calling shuffle questions function
-    shuffleQuestion();
 
     // Question title
     let questionText = `<span> ${questions[indexQuestion].question} </span>`;
@@ -279,7 +271,7 @@ const showQuestionsFunction = (indexQuestion) => {
     let quizButtonsContainer = `<div class="buttonContainer">` +
         `<input type="button" value="Quitter" class="exitButton">` +
         `<input type="button" value="Suivant" class="nextButton" disabled>` +
-        `</div>`
+        `</div>`;
 
     // Show question, answer suggested and button
     // Add all of that in the DOM
@@ -348,11 +340,11 @@ const showQuestionsFunction = (indexQuestion) => {
             getUserScore();
 
             // Display (show) user final score(Score board)
-            scoreBoard.style.display = "flex";
-            showUserScoreBoard();
+            scorePage.style.display = "flex";
+            showUserscorePage();
 
             // Hide quiz box
-            quizBox.classList.remove("show");
+            quizPage.classList.remove("show");
         };
     };
 
@@ -448,11 +440,11 @@ const showQuestionsFunction = (indexQuestion) => {
         getUserScore();
 
         // Show user score board
-        scoreBoard.style.display = "flex";
-        showUserScoreBoard();
+        scorePage.style.display = "flex";
+        showUserscorePage();
 
         // Hide quiz box
-        quizBox.classList.remove("show");
+        quizPage.classList.remove("show");
     };
 
     // On exiting quiz
@@ -470,7 +462,7 @@ mailErrorMessage.textContent = "";
 username.after(nameErrorMessage);
 usermail.after(mailErrorMessage);
 
-// Home page form
+// home page form
 homePageForm.addEventListener("submit", storeUserData = (event) => {
     event.preventDefault();
     // Assign user data to variables 
@@ -480,40 +472,33 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
     nameErrorMessage.style.color = "red";
     mailErrorMessage.style.color = "red";
     // Validator
-    if (username.value == "") {
+    const validUserName = new RegExp(/(?=.*[a-zA-Z.]{3,})/);
+    const validUserMail = new RegExp(/(?=.*@)/)
+
+    const correctUserName = username.value.match(validUserName);
+    const correctUserMail = usermail.value.match(validUserMail);
+    if (correctUserName == null) {
         username.style.border = ".1em solid red";
         nameErrorMessage.textContent = "N’oubliez pas de renseigner votre nom avant de commencer le Quiz.";
-
-        if (usermail.value == "") {
-            usermail.style.border = ".1em solid red";
-            mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
-            for (let i = 0; i < usermailValue.length; i++) {
-                if (usermailValue[i] != "@") {
-                    usermail.style.border = ".1em solid red";
-                    mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
-                }
-            }
-        }
+        console.log(correctUserName);
+    } if (correctUserMail == null) {
+        usermail.style.border = ".1em solid red";
+        mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
     }
     else {
         // Store user data
         localStorage.setItem("user-name", usernameValue);
         localStorage.setItem("user-mail", usermailValue);
         homeContent.style.display = "none";
-        quizBox.classList.add("show");
+        quizPage.classList.add("show");
         homePageForm.reset();
         showQuestionsFunction(0);
     };
 });
 
 // Back to home function 
-backToHome.addEventListener("click", homeReturn = (event) => {
-    quizBox.classList.remove("show");
-    scoreBoard.style.display = "none";
-    homeContent.style.display = "flex";
-    homePageForm.reset();
-    userScore = 0;
-    answerSelected = "";
+backToHome.addEventListener("click", homeReturn = () => {
+    window.location.reload();
 });
 
 // User score board elements
@@ -524,7 +509,7 @@ const icon__container = document.querySelector(".icon__container");
 const lasIcon = document.querySelector(".lni");
 
 // Function for get and show user final score
-const showUserScoreBoard = (event) => {
+const showUserscorePage = (event) => {
     // Get user name and user mail
     const userName = localStorage.getItem("user-name");
     const userMail = localStorage.getItem("user-mail");
