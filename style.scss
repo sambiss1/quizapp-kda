@@ -152,7 +152,7 @@ form {
     background: $submit__button__bg;
     border-radius: 1em;
     transition: width 1s ease-in;
-    // animation: progress 100s;
+    // animation: progress 120s;
 }
 
 @keyframes progress {
@@ -318,20 +318,20 @@ input[type="radio"] {
 }
 
 @media screen and (max-width: 1024px) and (min-width:978px) {
-    .container {
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 977px) and (min-width: 769px) {
-    .container {
+    #home {
         width: 60%;
     }
 }
 
+@media screen and (max-width: 977px) and (min-width: 769px) {
+    #home {
+        width: 80%;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    .container {
+    #home {
         width: 100% !important;
-        margin: 0 5% !important;
+        margin: 0;
     }
 }

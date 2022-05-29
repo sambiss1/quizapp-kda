@@ -25,31 +25,31 @@ const questions = [
     // Question 1
     {
         id: 1,
-        question: "Which of the following is an advantage of using JavaScript?",
-        correctAnswer: "All of the above",
+        question: "Lequel des éléments suivants est un avantage de l'utilisation de JavaScript ?",
+        correctAnswer: "Toutes ces réponses",
         answerSuggested: [
-            "Immediate feedback to the visitors",
-            "Increased interactivity",
-            "All of the above",
-            "Less server interaction"
+            "Retour immédiat aux visiteurs",
+            "Augmentation de l'interactivité",
+            "Toutes ces réponses",
+            "Moins d'interaction avec le serveur"
         ]
     },
     // Question 2
     {
         id: 2,
-        question: "How can you get the total number of arguments passed to a function ?",
-        correctAnswer: "Using arguments.length property",
+        question: "Comment obtenir le nombre total d'arguments passés à une fonction ?",
+        correctAnswer: "Utilisation de la propriété arguments.length",
         answerSuggested: [
-            "None of the above.",
-            "Using arguments.length property",
-            "Using args.length property",
-            "Both of the above"
+            "Aucune des réponses ci-dessus.",
+            "Utilisation de la propriété arguments.length",
+            "Utilisation de la propriété args.length",
+            "Les deux ci-dessus"
         ]
     },
     // Question 3
     {
         id: 3,
-        question: "Which of the following function of String object creates an HTML hypertext link that requests another URL ?",
+        question: "Laquelle des fonctions suivantes de l'objet String crée un lien hypertexte HTML qui demande une autre URL ?",
         correctAnswer: "link()",
         answerSuggested: [
             "link()",
@@ -61,7 +61,7 @@ const questions = [
     // Question 4
     {
         id: 4,
-        question: "Which of the following function of Array object applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value?",
+        question: "Laquelle des fonctions suivantes de l'objet Array applique une fonction simultanément à deux valeurs du tableau (de gauche à droite) afin de le réduire à une seule valeur ?",
         correctAnswer: "reduce()",
         answerSuggested: [
             "reduceRight()",
@@ -73,7 +73,7 @@ const questions = [
     // Question 5
     {
         id: 5,
-        question: "Which of the following function of Array object extracts a section of an array and returns a new array?",
+        question: "Laquelle des fonctions suivantes de l'objet Array extrait une section d'un tableau et renvoie un nouveau tableau ?",
         correctAnswer: "slice()",
         answerSuggested: [
             "slice()",
@@ -85,31 +85,31 @@ const questions = [
     // Question 6
     {
         id: 6,
-        question: "Which built-in method reverses the order of the elements of an array?",
+        question: "Quelle méthode intégrée inverse l'ordre des éléments d'un tableau ?",
         correctAnswer: "reverse()",
         answerSuggested: [
             "changeOrder(order)",
             "sort(order)",
             "reverse()",
-            "None of the above"
+            "Aucune de ces réponses"
         ]
     },
     //QUestion 7
     {
         id: 7,
-        question: "Which built-in method calls a function for each element in the array?",
+        question: "Quelle méthode intégrée appelle une fonction pour chaque élément du tableau ?",
         correctAnswer: "forEach()",
         answerSuggested: [
             "loop()",
             "forEach()",
             "while()",
-            "None of the above"
+            "Aucune de ces réponses"
         ]
     },
     // Question 8
     {
         id: 8,
-        question: "Which of the following function of String object splits a String object into an array of strings by separating the string into substrings?",
+        question: "Laquelle des fonctions suivantes de l'objet String divise un objet String en un tableau de chaînes de caractères en séparant la chaîne de caractères en sous-chaînes ?",
         correctAnswer: "split()",
         answerSuggested: [
             "split()",
@@ -121,7 +121,7 @@ const questions = [
     // Question 9
     {
         id: 9,
-        question: "Which of the following function of Number object defines how many total digits to display of a number?",
+        question: "Laquelle des fonctions suivantes de l'objet Number définit le nombre total de chiffres à afficher d'un nombre ?",
         correctAnswer: "toPrecision()",
         answerSuggested: [
             "toExponential()",
@@ -133,7 +133,7 @@ const questions = [
     // Question 10
     {
         id: 10,
-        question: "Which of the following function of String object returns the calling string value converted to upper case?",
+        question: "Laquelle des fonctions suivantes de l'objet String renvoie la valeur de la chaîne de caractères appelante convertie en majuscules ?",
         correctAnswer: "toUpperCase()",
         answerSuggested: [
             "toLocaleUpperCase()",
@@ -145,7 +145,7 @@ const questions = [
     // Question 11
     {
         id: 11,
-        question: "Which built-in method adds one or more elements to the end of an array and returns the new length of the array?",
+        question: "Quelle méthode intégrée ajoute un ou plusieurs éléments à la fin d'un tableau et renvoie la nouvelle longueur du tableau ?",
         correctAnswer: "push()",
         answerSuggested: [
             "last()",
@@ -157,7 +157,7 @@ const questions = [
     // Question 12
     {
         id: 12,
-        question: "Which of the following function of Array object returns a new array comprised of this array joined with other array(s) and/or value(s)?",
+        question: "Laquelle des fonctions suivantes de l'objet Array renvoie un nouveau tableau composé de ce tableau joint à d'autres tableaux et/ou valeurs ?",
         correctAnswer: "concat()",
         answerSuggested: [
             "some()",
@@ -169,7 +169,7 @@ const questions = [
     // Question 13
     {
         id: 13,
-        question: "Which of the following function of Array object joins all elements of an array into a string?",
+        question: "Laquelle des fonctions suivantes de l'objet Array joint tous les éléments d'un tableau en une chaîne de caractères ?",
         correctAnswer: "join()",
         answerSuggested: [
             "concat()",
@@ -193,13 +193,13 @@ const questions = [
     // Question 15
     {
         id: 15,
-        question: "Which of the following is correct about features of JavaScript?",
-        correctAnswer: "All of the above",
+        question: "Lequel des énoncés suivants est correct concernant les caractéristiques de JavaScript ?",
+        correctAnswer: "Toutes ces réponses",
         answerSuggested: [
-            "JavaScript is a lightweight, interpreted programming language",
-            "JavaScript is designed for creating network-centric applications",
-            "All of the above",
-            "JavaScript is complementary to and integrated with Java"
+            "JavaScript est un langage de programmation interprété et léger",
+            "JavaScript est conçu pour créer des applications centrées sur le réseau",
+            "Toutes ces réponses",
+            "JavaScript est complémentaire et intégré à Java"
         ]
     },
 ];
@@ -388,22 +388,19 @@ const showQuestionsFunction = (indexQuestion) => {
     // Function for starting timer
     const startTime = (time) => {
         const timer = () => {
-
             // Decremente time
             time--;
 
             // Show timer on page
             timeCounter.textContent = time;
 
-
-            console.log(time);
             // If time is less than 9 we add zero to number(integer)
             if (time < 9) {
                 let addZero = timeCounter.textContent;
                 timeCounter.textContent = "0" + addZero;
             }
             // If time is less than 0 we stop timer, and call next question function
-            if (time <= 0) {
+            if (time < 0) {
 
                 clearInterval(countTime);
                 nextQuestion();
@@ -430,7 +427,7 @@ const showQuestionsFunction = (indexQuestion) => {
                 clearInterval(progressLine);
             };
         };
-        progressLine = setInterval(widthTimerBar, 100);
+        progressLine = setInterval(widthTimerBar, 1000);
     };
 
     // start timer and progress bar decrement

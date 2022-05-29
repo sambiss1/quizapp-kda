@@ -6,10 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <title>JavaScript Quiz APP | Home Page</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
-  <!-- <link rel="stylesheet"
-    href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css"> -->
 
-  <!-- <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"> -->
   <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
   <link rel="icon" href="./icon-logo.png">
 </head>
@@ -17,59 +14,59 @@
 <body>
   <!--Main container -->
   <!-- <div class="container"> -->
-    <div id="home">
-      <h1>JavaScript Quiz</h1>
-      <p class="presentation-text">
-        Évaluez vos connaissances en JavaScript en répondant aux questions que nous avons spécialement sélectionnées
-        pour
-        vous.
-        <br>C'est fun et c'est gratuit.
-      </p>
-      <!-- Main form-->
-      <form class="main-form">
-        <div class="username__container">
-          <label for="username">Nom</label>
-          <br>
-          <input type="text" id="username" name="username" placeholder="e.g. Joseph">
-        </div>
-        <div class="usermail__container">
-          <label for="usermail">Email</label>
-          <br>
-          <input type="email" id="usermail" name="usermail" placeholder="e.g. joseph@kinshasadigital.com">
-        </div>
-        <div class="startbutton__container">
-          <input type="submit" value="Commencer" class="startButton">
-        </div>
-      </form>
+  <div id="home">
+    <h1>JavaScript Quiz</h1>
+    <p class="presentation-text">
+      Évaluez vos connaissances en JavaScript en répondant aux questions que nous avons spécialement sélectionnées
+      pour
+      vous.
+      <br>C'est fun et c'est gratuit.
+    </p>
+    <!-- Main form-->
+    <form class="main-form">
+      <div class="username__container">
+        <label for="username">Nom</label>
+        <br>
+        <input type="text" id="username" name="username" placeholder="e.g. Joseph">
+      </div>
+      <div class="usermail__container">
+        <label for="usermail">Email</label>
+        <br>
+        <input type="email" id="usermail" name="usermail" placeholder="e.g. joseph@kinshasadigital.com">
+      </div>
+      <div class="startbutton__container">
+        <input type="submit" value="Commencer" class="startButton">
+      </div>
+    </form>
+  </div>
+  <div id="quiz__box">
+    <!--Question title-->
+    <p class="question-title">
+
+    </p>
+    <!--Question status-->
+    <div class="questionstatus__container">
+
     </div>
-    <div id="quiz__box">
-      <!--Question title-->
-      <p class="question-title">
+    <form class="question-form">
 
-      </p>
-      <!--Question status-->
-      <div class="questionstatus__container">
+    </form>
+  </div>
+  <div id="score__board">
+    <div class="username__response">
 
-      </div>
-      <form class="question-form">
-
-      </form>
     </div>
-    <div id="score__board">
-      <div class="username__response">
+    <div class="usermail__response">
 
-      </div>
-      <div class="usermail__response">
-
-      </div>
-      <div class="icon__container">
-        <p><i class="lni "></i></p>
-      </div>
-      <div class="userscore__container">
-
-      </div>
-      <button class="backToHome">Accueil</button>
     </div>
+    <div class="icon__container">
+      <p><i class="lni "></i></p>
+    </div>
+    <div class="userscore__container">
+
+    </div>
+    <button class="backToHome">Accueil</button>
+  </div>
   <!-- </div> -->
   <script src="script.js"></script>
 </body>
