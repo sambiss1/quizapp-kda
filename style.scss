@@ -4,6 +4,8 @@
 
 /* Create reusable variables */
 $main__color: #028A3D;
+$second__color: #EC880C;
+$third__color: #0880D6;
 $main__padding: 5%;
 $margin: 10% 0;
 $white-color: #FFFFFF;
@@ -272,6 +274,7 @@ button {
 
 .lni {
     font-weight: 900 !important;
+    font-size: 7em !important;
 }
 
 .success {
@@ -281,6 +284,18 @@ button {
 
 .failed {
     color: #FF3838;
+}
+
+.backToHome {
+    @extend .startButton;
+    background: $third__color;
+}
+
+.username__response,
+.usermail__response,
+.icon__container,
+.userscore__container {
+    margin: 5% 0;
 }
 
 
