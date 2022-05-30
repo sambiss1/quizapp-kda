@@ -17,7 +17,7 @@ body {
   padding: 5%;
 }
 
-.centereditems, #home__page, #score__page, #quiz__page.show, #quiz__page, .startbutton__container, #home, #quiz__box.show, #quiz__box, .container, html,
+.centereditems, .startbutton__container, #home__page, #score__page, #quiz__page.show, #quiz__page, .container, html,
 body {
   display: flex;
   justify-content: center;
@@ -28,7 +28,7 @@ body {
   text-decoration: none;
 }
 
-.container, #home__page, #score__page, #quiz__page.show, #quiz__page, #home, #quiz__box.show, #quiz__box {
+.container, #home__page, #score__page, #quiz__page.show, #quiz__page {
   flex-direction: column;
   width: 45%;
   background: #fff;
@@ -36,7 +36,7 @@ body {
   padding: 5%;
 }
 
-#home, #quiz__box.show, #quiz__box {
+#home__page, #score__page, #quiz__page.show, #quiz__page {
   flex-direction: column;
 }
 
@@ -78,14 +78,14 @@ form input[type=email] {
 }
 
 /* Question page */
-#quiz__box {
+#quiz__page {
   display: none;
 }
 
-#quiz__box.show {
+#quiz__page.show {
   padding: 0 5%;
 }
-#quiz__box.show .question-title {
+#quiz__page.show .question-title {
   margin: 10% 0 0;
 }
 
@@ -178,23 +178,7 @@ button {
   padding: 0.8em 10%;
   width: 50%;
 }
-/* Change content*/
-#home__page, #score__page, #quiz__page.show, #quiz__page {
-  flex-direction: column;
-}
-
-#quiz__page {
-  display: none;
-}
-
-#quiz__page.show {
-  padding: 0 5%;
-}
-#quiz__page.show .question-title {
-  margin: 10% 0 0;
-}
-
-/* Score board */
+/* Score page */
 #score__page {
   display: none;
 }
@@ -240,6 +224,7 @@ button {
   }
 
   h1 {
+    margin: 10% 0;
     font-size: 1.4em;
   }
 
@@ -254,6 +239,15 @@ button {
 
   label {
     font-size: 0.8em;
+  }
+
+  .startButton, .nextButton, .exitButton, .backToHome {
+    padding: 0.6em 5%;
+    margin: 5% 0 10%;
+  }
+
+  .nextButton {
+    margin-left: 5%;
   }
 }
 
