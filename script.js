@@ -481,28 +481,19 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
         username.style.border = ".1em solid red";
         nameErrorMessage.textContent = "N’oubliez pas de renseigner votre nom avant de commencer le Quiz.";
         console.log(correctUserName);
-    } else {
-        localStorage.setItem("user-name", usernameValue);
-        nameErrorMessage.textContent = "";
-        username.style.border = ".1em solid #028A3D";
-    }
-
-    if (correctUserMail == null) {
+    } if (correctUserMail == null) {
         usermail.style.border = ".1em solid red";
         mailErrorMessage.textContent = "N’oubliez pas de renseigner votre email avant de commencer le Quiz."
     }
     else {
         // Store user data
+        localStorage.setItem("user-name", usernameValue);
         localStorage.setItem("user-mail", usermailValue);
-        mailErrorMessage.textContent = "";
-        usermail.style.border = ".1em solid #028A3D";
-    };
-    if (correctUserName != null && correctUserMail != null) {
         homeContent.style.display = "none";
         quizPage.classList.add("show");
         homePageForm.reset();
         showQuestionsFunction(0);
-    }
+    };
 });
 
 // Back to home function 
