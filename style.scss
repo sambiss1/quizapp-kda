@@ -59,7 +59,7 @@ body {
 }
 
 // Home page
-#home {
+#home__page {
     @extend .centereditems;
     @extend .container;
     flex-direction: column;
@@ -115,19 +115,20 @@ form {
 }
 
 /* Question page */
-#quiz__box {
-    @extend #home;
+#quiz__page {
+    @extend #home__page;
     display: none;
 }
 
-#quiz__box.show {
-    @extend #home;
+#quiz__page.show {
+    @extend #home__page;
     padding: 0 5%;
 
     .question-title {
         margin: 10% 0 0;
     }
 }
+
 
 
 // QUestion status
@@ -250,28 +251,8 @@ button {
     }
 }
 
-/* Change content*/
-#home__page {
-    @extend .centereditems;
-    @extend .container;
-    flex-direction: column;
-}
 
-#quiz__page {
-    @extend #home__page;
-    display: none;
-}
-
-#quiz__page.show {
-    @extend #home__page;
-    padding: 0 5%;
-
-    .question-title {
-        margin: 10% 0 0;
-    }
-}
-
-/* Score board */
+/* Score page */
 #score__page {
     @extend #home__page;
     display: none;
@@ -319,12 +300,14 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+
     #home__page {
         width: 100% !important;
         margin: 0;
     }
 
     h1 {
+        margin: $margin;
         font-size: 1.4em;
     }
 
@@ -341,5 +324,21 @@ button {
         font-size: .8em;
     }
 
+    .startButton {
+        padding: .6em 5%;
+        margin: 5% 0 10%;
+    }
 
+    .backToHome {
+        @extend .startButton;
+    }
+
+    .nextButton {
+        margin-left: 5%;
+    }
+
+    .nextButton,
+    .exitButton {
+        @extend .startButton;
+    }
 }
