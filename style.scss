@@ -6,7 +6,6 @@
 $main__color: #028A3D;
 $main__padding: 5%;
 $margin: 10% 0;
-// $submit__button__bg: #028A3D;
 $white-color: #FFFFFF;
 $button__font-size: 1em;
 $answer__border: .1em solid #C4C4C4;
@@ -19,8 +18,6 @@ $middle__width: 50%;
     padding: 0;
     box-sizing: border-box;
 }
-
-
 
 html,
 body {
@@ -153,7 +150,6 @@ form {
     background: $main__color;
     border-radius: 1em;
     transition: width 1s ease-in;
-    // animation: progress 120s;
 }
 
 // Question form 
@@ -203,7 +199,6 @@ form {
     }
 }
 
-
 // Button box-shadow;
 input[type="button"],
 input[type="submit"],
@@ -214,7 +209,6 @@ button {
 .elementHover {
     cursor: pointer;
 }
-
 
 .buttonContainer {
     @extend .status;
@@ -326,6 +320,4 @@ button {
     label {
         font-size: .8em;
     }
-
-
 }
