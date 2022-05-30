@@ -223,6 +223,7 @@ let answerSelected = "";
 // Function for showing questions 
 const showQuestionsFunction = (indexQuestion) => {
 
+    document.title = "JavaScript Quiz APP | Questions ";
     // Question Title
     const questionTitle = document.querySelector(".question-title");
     // questionTitle.classList.add("presentation-text");
@@ -370,7 +371,7 @@ const showQuestionsFunction = (indexQuestion) => {
     });
 
 
-    
+
 
     // Timer
     const timeCounter = document.querySelector(".timercounter");
@@ -509,6 +510,8 @@ const lasIcon = document.querySelector(".lni");
 
 // Function for get and show user final score
 const showUserscorePage = (event) => {
+    document.title = "JavaScript Quiz APP | Result";
+
     // Get user name and user mail
     const userName = localStorage.getItem("user-name");
     const userMail = localStorage.getItem("user-mail");
