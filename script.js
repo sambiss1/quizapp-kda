@@ -211,9 +211,6 @@ for (let i = 0; i < questions.length; i++) {
 // indexQuestion
 let indexQuestion = 0;
 
-// index of question 
-let index = 0;
-
 // User score
 let userScore = 0;
 
