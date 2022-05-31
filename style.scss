@@ -84,6 +84,12 @@ form {
     }
 }
 
+.errorMessage {
+    color: red;
+    font-size: .8em;
+}
+
+
 .startButton {
     padding: 1em 10%;
     background: $main__color;
@@ -272,8 +278,8 @@ button {
     background: $third__color;
 }
 
-.username__response,
-.usermail__response,
+.username,
+.usermail,
 .icon__container,
 .userscore__container {
     margin: 5% 0;
