@@ -58,6 +58,11 @@ form input[type=email] {
   margin: 2% 0;
 }
 
+.errorMessage {
+  color: red;
+  font-size: 0.8em;
+}
+
 .startButton, .backToHome, .exitButton, .nextButton {
   padding: 1em 10%;
   background: #028A3D;
@@ -200,8 +205,8 @@ button {
   background: #0880D6;
 }
 
-.username__response,
-.usermail__response,
+.username,
+.usermail,
 .icon__container,
 .userscore__container {
   margin: 5% 0;
