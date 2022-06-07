@@ -9,8 +9,6 @@ const scorePage = document.querySelector("#score__page");
 
 const homePageForm = document.querySelector("form")
 
-
-
 const questions = [
     {
         id: 1,
@@ -248,12 +246,13 @@ const showQuestionsFunction = (indexQuestion) => {
             });
         };
     };
-
+    if (indexQuestion === questions.length - 1) {
+        nextQuestionButton.value = "Terminer";
+    };
     const nextQuestion = () => {
         clearInterval(countTime);
         countTime = 0;
         if (indexQuestion < questions.length - 1) {
-
             // Get user current score
             getUserScore();
             indexQuestion++;
@@ -269,6 +268,7 @@ const showQuestionsFunction = (indexQuestion) => {
             showUserscorePage();
             quizPage.classList.remove("show");
         };
+
     };
 
     const getUserScore = () => {
@@ -356,8 +356,8 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
     nameErrorMessage.classList.add("errorMessage");
     mailErrorMessage.classList.add("errorMessage");
 
-    const validUserName = new RegExp(/(?=.*[a-zA-Z.]{3,})/);
-    const validUserMail = new RegExp(/(?=.*@)/)
+    const validUserName = new RegExp(/(?=.*[a-zA-Z.]{2,})/);
+    const validUserMail = new RegExp(/(?=.*@{10,})/)
 
     const correctUserName = username.value.match(validUserName);
     const correctUserMail = usermail.value.match(validUserMail);
