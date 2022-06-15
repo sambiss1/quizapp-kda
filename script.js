@@ -357,7 +357,7 @@ homePageForm.addEventListener("submit", storeUserData = (event) => {
     mailErrorMessage.classList.add("errorMessage");
 
     const validUserName = new RegExp(/(?=.*[a-zA-Z.]{2,})/);
-    const validUserMail = new RegExp(/(?=.*@{10,})/)
+    const validUserMail = new RegExp(/(?=.*@)/)
 
     const correctUserName = username.value.match(validUserName);
     const correctUserMail = usermail.value.match(validUserMail);
